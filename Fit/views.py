@@ -7,3 +7,6 @@ def home(request):
     #return HttpResponse('<h1>welcome to home Page </h1>')
     #return render(request, 'home.html')
     return render(request, 'home.html', {'name': 'Laura Marin'})
+
+def about(request):
+    return render(request, 'about.html')

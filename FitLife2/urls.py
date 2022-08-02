@@ -20,4 +20,6 @@ from Fit import views as Fitviews
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', Fitviews.home),
+    path('about/', Fitviews.about),
+
 ]
