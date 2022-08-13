@@ -14,12 +14,21 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from Fit import views as Fitviews
+
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('iniciar/', Fitviews.iniciar_sesion),
+    path('registro/', Fitviews.registro_usuario),
+    #path('registro/', Fitviews.Usuario),
+    #path('crear/', Fitviews.crear)
     path('', Fitviews.home),
-    path('about/', Fitviews.about),
+    
+
 
 ]
+urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
