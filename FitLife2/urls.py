@@ -22,13 +22,7 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('iniciar/', Fitviews.iniciar_sesion),
-    path('registro/', Fitviews.registro_usuario),
-    #path('registro/', Fitviews.Usuario),
-    #path('crear/', Fitviews.crear)
-    path('', Fitviews.home),
+    path('',include('Fit.urls')),
     
-
-
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

@@ -10,3 +10,7 @@ class registro(models.Model):
     peso = models.IntegerField()
     estatura = models.IntegerField()
     ciudad = models.CharField(max_length=40)
+
+#def __str__(self):
+#    fila = " Nombre: " +self.nombre +" " "Apellido: "+ self.apellido
+#    return self.fila

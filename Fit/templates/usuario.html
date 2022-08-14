@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title> <h1> Lista de Usuarios <h1/> </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS v5.2.0-beta1 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"  integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <nav class="navbar navbar-expand navbar-light bg-light">
+        <div class="nav navbar-nav">
+            <a class="nav-item nav-link active" href="#">Inicio <span class="visually-hidden">(current)</span></a>
+            <a class="nav-item nav-link" href="#">Usuarios</a>
+            <a class="nav-item nav-link" href="#">Calorias</a>
+
+        </div>
+    </nav>
+        <div class="container">
+            <div class="row">
+                <div class ="col-12"
+
+                <div class="card">
+                    <div class="card-header">
+                        <a name="" id="" class="btn btn-success" href="#" role="button">Agregar usuario</a> 
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">usuarios</h4>
+                        
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>nombre</th>
+                                    <th>apellido</th>
+                                    <th>sexo</th>
+                                    <th>edad</th>
+                                    <th>email</th>
+                                    <th>peso</th>
+                                    <th>estatura</th>
+                                    <th>ciudad</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                {% for registros in registros %}
+                                <tr>
+                                    <td>{{ registros.nombre }}</td>
+                                    <td>{{ registros.apellido }}</td>
+                                    <td>{{ registros.sexo }}</td>
+                                    <td>{{ registros.edad }}</td>
+                                    <td>{{ registros.email }}</td>
+                                    <td>{{ registros.peso }}</td>
+                                    <td>{{ registros.estatura }}</td>
+                                    <td>{{ registros.ciudad }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        
+                    </div>
+                    <div class="card-footer text-muted">
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+  </body>
+</html>
