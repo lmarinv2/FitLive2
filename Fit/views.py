@@ -1,6 +1,6 @@
 from mailbox import NoSuchMailboxError
 import re
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import registro
 from .forms import registroForm
@@ -15,16 +15,16 @@ def home(request):
 
 def calorias(request):
     registros = registro.objects.all()
-    sexo = registro.objects.values_list('sexo','estatura','peso')
+    sexo = registro.objects.values_list('sexo','edad','peso')
     sexo = [list(elem) for elem in sexo]
-    edad = registro.objects.values_list('estatura')
+    edad = registro.objects.values_list('edad')
     edad = [list(elem) for elem in edad]
     peso = registro.objects.values_list('peso')
     peso = [list(elem) for elem in peso]
 
-    #.annotate(resta=F('estatura') - F('peso'))
-    #print(sexo);
-    #print(sexo[2][0]);
+    caloria1=0;
+
+    kal =[];
     a =0;
     for i in peso:        
         b=0;
@@ -38,8 +38,9 @@ def calorias(request):
                     print("edad: ");
                     print(sexo[a][1]);
                     print("calorias reposo");
-                    caloria = 13.384 * sexo[a][2]  + 692.6;
-                    print (caloria);
+                    caloria1 = 13.384 * sexo[a][2]  + 692.6;
+                    print (caloria1);
+                    kal.append(int(caloria1))
                 
                 if sexo[a][1] > 18 and sexo[a][1] <= 30:
                     print("sexo: ");
@@ -49,6 +50,7 @@ def calorias(request):
                     print("calorias reposo");
                     caloria = 14.818 * sexo[a][2]  + 486.6;
                     print (caloria);
+                    kal.append(int(caloria))
                 
                 if sexo[a][1] > 30 and sexo[a][1] <=60:
                     print("sexo: ");
@@ -58,6 +60,7 @@ def calorias(request):
                     print("calorias reposo");
                     caloria = 8.126 * sexo[a][2]  + 845.6;
                     print (caloria);
+                    kal.append(int(caloria))
                 
                 if sexo[a][1] > 60:
                     print("sexo: ");
@@ -67,6 +70,7 @@ def calorias(request):
                     print("calorias reposo");
                     caloria = 9.082 * sexo[a][2]  + 658.5;
                     print (caloria);
+                    kal.append(int(caloria))
 
 
             else:
@@ -78,6 +82,7 @@ def calorias(request):
                     print("calorias reposo");                                                   
                     caloria = 17.686 * sexo[a][2]  + 658.2;
                     print (caloria);
+                    kal.append(int(caloria))
                 
                 if sexo[a][1] > 18 and sexo[a][1] <= 30:
                     print("sexo: ");
@@ -87,6 +92,7 @@ def calorias(request):
                     print("calorias reposo");
                     caloria = 15.057 * sexo[a][2]  + 692.2;
                     print (caloria);
+                    kal.append(int(caloria))
                 
                 if sexo[a][1] > 30 and sexo[a][1] <=60:
                     print("sexo: ");
@@ -96,6 +102,7 @@ def calorias(request):
                     print("calorias reposo");
                     caloria = 11.472 * sexo[a][2]  + 873.1;
                     print (caloria);
+                    kal.append(int(caloria))
                 
                 if sexo[a][1] > 60:
                     print("sexo: ");
@@ -105,32 +112,25 @@ def calorias(request):
                     print("calorias reposo");
                     caloria = 11.711 * sexo[a][2]  + 587.7;
                     print (caloria);
+                    kal.append(int(caloria))
 
 
         a=a+1;
- 
- #              # caloria = registro.objects.values('email').annotate(caloria=F('estatura') - F('peso'))
- #              caloria = 13.384 *F('peso')  + 692.6
- #              print (caloria);
- #           elif registro.estatura > 18 & registro.estatura <= 30:
- #              caloria = 14.818 * registro.peso + 486.6
- #           elif registro.estatura > 30 & registro.estatura <=60:
- #              caloria = 8.126 * registro.peso + 845.6
- #           elif registro.estatura > 60:
- #              caloria = 9.082 * registro.peso + 658.5
-            
-                                                                               #la variable estatura es la edad
-   #     if sexo == "Masculino":
-   #         if edad <= 18:
-   #             caloria = 17.686* peso + 658.2
-   #         elif edad > 18 & edad <= 30:
-   #             caloria = 15.057* peso + 692.2
-   #         elif edad > 30 & edad <=60:
-   #             caloria = 11.472 * peso + 873.1
-   #         elif edad > 60:
-   #             caloria = 11.711 * peso + 587.7
-   #  
-    return render(request,'calorias.html',{'registros':registros})
+    print (kal);
+    kalo=[];
+    c=0;
+    for i in range(6):
+        kalo.append([]);
+        for j in range(1):
+            kalo[c].append(kal[i]);
+            c+=1;
+    print(kalo)
+
+    return render(request,'calorias.html',{'c':kalo})
+
+def usuariocal(request):
+    registros = registro.objects.all()
+    return render(request, 'calorias.html', {'registros':registros})
 
 def usuario(request):
     registros = registro.objects.all()
@@ -138,12 +138,13 @@ def usuario(request):
 
 def crearusuario(request):
     formulario = registroForm(request.POST or None)
-    return render(request, 'crearusuario.html',{formulario:formulario})
+    if formulario.is_valid():
+        formulario.save()
+        return redirect('registros');
+    return render(request, 'crearusuario.html',{'formulario':formulario})
 
 def deportes(request):
     return render(request, 'deportes.html')
 
 def iniciar_sesion(request):
     return render(request, 'iniciar_sesion.html')
-
-

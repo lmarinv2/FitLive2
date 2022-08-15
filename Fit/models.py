@@ -8,8 +8,11 @@ class registro(models.Model):
     fecha_nacimiento= models.DateField()
     email = models.EmailField()
     peso = models.IntegerField()
-    estatura = models.IntegerField()
+    edad = models.IntegerField()
     ciudad = models.CharField(max_length=40)
+
+class calorias(models.Model):
+    kal = models.IntegerField(max_length=30)
 
 #def __str__(self):
 #    fila = " Nombre: " +self.nombre +" " "Apellido: "+ self.apellido
