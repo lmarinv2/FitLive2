@@ -1,3 +1,4 @@
+import email
 from mailbox import NoSuchMailboxError
 import re
 from django.shortcuts import render, redirect
@@ -26,7 +27,7 @@ def calorias(request):
 
     kal =[];
     a =0;
-    for i in peso:        
+    for i in peso:         
         b=0;
         for j in i :
             if sexo[a][b] == 'Femenino':
@@ -128,6 +129,58 @@ def calorias(request):
 
     return render(request,'calorias.html',{'c':kalo})
 
+def deportes(request):
+    return render(request, 'deportes.html')
+    registros = registro.objects.all()
+    id = registro.objects.values_list('id')
+    id = [list(elem) for elem in id]
+    deportes={'1':"Ciclismo",
+            '2':"Natación",
+            '3':"Correr",
+            '4':"Gimnasio",
+            '5':"Crossfit", 
+            }
+    for i in range(len(id)):
+        
+        eleccion = int(input(
+            "Ingrese el numero correspondiente al deporte a practicar:\n(1)->Ciclismo\n(2)->Natacion\n(3)->Correr\n("
+            "4)->Gimnasio\n(5)->Crossfit"))
+        if eleccion == 1:
+            print(f' Has seleccionado ciclismo')
+            print('Este deporte quema 290  y 384 calorias por sesion')
+            registros[i]['deporte']='ciclismo'
+        elif eleccion == 2:
+            print('Has seleccionado Natacion')
+            print('Este deporte quema entre 180 y 250 calorias por sesion')
+            registros[i]['deporte'] = 'Natacion'
+        elif eleccion == 3:
+            print('Has seleccionado Correr')
+            print('Este deporte quema entre 240 y 336 calorias por sesion')
+            registros[i]['deporte'] = 'Correr'
+        elif eleccion == 4:
+            print('Has seleccionado Gimnasio')
+            print('Este deporte quema entre 250 y 295 calorias por sesion')
+            registros[i]['deporte'] = 'Gimnasio'
+        elif eleccion == 5:
+            print('Has seleccionado Crossfit')
+            print('Este deporte quema entre 261 y 289 calorias por sesion')
+            registros[i]['deporte'] = 'Crossfit'
+        elif eleccion < 1 or eleccion > 5:
+            print("Error")
+
+def seleccionar(request):
+    
+    if request.GET["email"]:
+        #mensaje="Bienvenido : %r" %request.GET["email"]
+        correo=request.GET["email"]
+        
+        direcciones=registro.objects.filter(email__icontains=correo)
+        return render(request, "seleccion_deporte.html",{"direcciones":direcciones,"query":correo})
+    else:
+        mensaje="No has introducido ningun Email"
+        
+    return HttpResponse(mensaje)
+
 def usuariocal(request):
     registros = registro.objects.all()
     return render(request, 'calorias.html', {'registros':registros})
@@ -143,8 +196,11 @@ def crearusuario(request):
         return redirect('registros');
     return render(request, 'crearusuario.html',{'formulario':formulario})
 
-def deportes(request):
-    return render(request, 'deportes.html')
+#def deportes(request):
+# return render(request, 'deportes.html')
 
 def iniciar_sesion(request):
     return render(request, 'iniciar_sesion.html')
+
+
+    

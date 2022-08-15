@@ -12,7 +12,7 @@ class registro(models.Model):
     ciudad = models.CharField(max_length=40)
 
 class calorias(models.Model):
-    kal = models.IntegerField(max_length=30)
+    kal = models.IntegerField()
 
 #def __str__(self):
 #    fila = " Nombre: " +self.nombre +" " "Apellido: "+ self.apellido

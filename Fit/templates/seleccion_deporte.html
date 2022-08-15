@@ -19,18 +19,41 @@
 
         
     </nav>
+
+<html>
+
 <body>
+    
+<p>Debes escoger un deporte principal a practicar</p>
 
-    <form action="seleccionar" method="GET">
-      <label for="" class="form-label">Ingrese correo electornico</label>
-      <input type="email" class="form-control" name="email" id="" aria-describedby="helpId" placeholder="example@gmail.com">
-      <input name="" id="" class="btn btn-primary" type="submit" value="Ingresar">
-        
+{%if registros %}
+
+    <p>Usuario encontrado:</p>
+    
+    <ul>
+        {%for registro in registro%}
+            <li>
+                {{registro.nombre}}
 
 
+            </li>
+
+        {% endfor %}   
+    </ul>
+{% else %}
 
 
+{% endif %}
 
+<select>
+    <option disable="true" selected>--seleccione deporte--</option>
+    <option>Ciclismo</option>
+    <option>Natacion</option>
+    <option>Correr</option>
+    <option>Gimnasio</option>
+    <option>Crossfit</option>
+  </select>
+  <input type="submit" value="click"
 
 </body>
-
+</html>

@@ -7,5 +7,6 @@ urlpatterns = [
     path('usuario', views.usuario , name='usuario'),
     path('crearusuario', views.crearusuario , name='crearusuario'),
     path('deportes',views.deportes ,name='deportes'),
-    path('iniciar_sesion', views.iniciar_sesion,name='iniciar_sesion')
+    path('iniciar_sesion', views.iniciar_sesion,name='iniciar_sesion'),
+    path('seleccionar',views.seleccionar),
 ]
