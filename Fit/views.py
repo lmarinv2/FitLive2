@@ -140,4 +140,10 @@ def crearusuario(request):
     formulario = registroForm(request.POST or None)
     return render(request, 'crearusuario.html',{formulario:formulario})
 
+def deportes(request):
+    return render(request, 'deportes.html')
+
+def iniciar_sesion(request):
+    return render(request, 'iniciar_sesion.html')
+
 
