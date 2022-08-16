@@ -9,4 +9,6 @@ urlpatterns = [
     path('deportes',views.deportes ,name='deportes'),
     path('iniciar_sesion', views.iniciar_sesion,name='iniciar_sesion'),
     path('seleccionar',views.seleccionar),
+    path('seleccion_deporte',views.seleccion_deporte,name='seleccion_deporte'),
+    path('deporte_seleccionado',views.deporte_seleccionado,name='deporte_seleccionado'),
 ]

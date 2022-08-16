@@ -206,5 +206,11 @@ def crearusuario(request):
 def iniciar_sesion(request):
     return render(request, 'iniciar_sesion.html')
 
+def seleccion_deporte(request):
+    return render(request,"seleccion_deporte")
+
+def deporte_seleccionado(request):
+    resultado=request.GET["opciones_deporte"]
+    return render(request,"deporte_seleccionado.html",{"opciones_deporte":resultado})
 
     

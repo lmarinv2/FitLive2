@@ -45,15 +45,16 @@
 
 {% endif %}
 
-<select>
-    <option disable="true" selected>--seleccione deporte--</option>
-    <option>Ciclismo</option>
-    <option>Natacion</option>
-    <option>Correr</option>
-    <option>Gimnasio</option>
-    <option>Crossfit</option>
-  </select>
-  <input type="submit" value="click"
-
-</body>
-</html>
+<form action="{% url 'deporte_seleccionado'%}">
+  <select name="opciones_deporte">
+      <option disable="true" selected>--seleccione deporte--</option>
+      <option>Ciclismo</option>
+      <option>Natacion</option>
+      <option>Correr</option>
+      <option>Gimnasio</option>
+      <option>Crossfit</option>
+    </select>
+    <input type="submit" value="Seleccionar">
+  </form>
+  
+  </html>
