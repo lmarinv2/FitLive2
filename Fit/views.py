@@ -1,12 +1,13 @@
 import email
 from mailbox import NoSuchMailboxError
+from pyexpat.errors import messages
 import re
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import registro
 from .forms import registroForm
 from django.db.models import F
-
+from django.contrib import messages
 from django.contrib.auth import authenticate, login
 
 
@@ -20,6 +21,8 @@ def calorias(request):
     sexo = [list(elem) for elem in sexo]
     edad = registro.objects.values_list('edad')
     edad = [list(elem) for elem in edad]
+    email = registro.objects.values_list('email')
+    email= [list(elem) for elem in email]
     peso = registro.objects.values_list('peso')
     peso = [list(elem) for elem in peso]
 
@@ -120,10 +123,10 @@ def calorias(request):
     print (kal);
     kalo=[];
     c=0;
-    for i in range(6):
-        kalo.append([]);
+    for i in sexo:
+        kalo.append([email[c]]);
         for j in range(1):
-            kalo[c].append(kal[i]);
+            kalo[c].append(kal[c]);
             c+=1;
     print(kalo)
 
@@ -193,6 +196,7 @@ def crearusuario(request):
     formulario = registroForm(request.POST or None)
     if formulario.is_valid():
         formulario.save()
+        messages.success(request,"Registado correctamente")
         return redirect('registros');
     return render(request, 'crearusuario.html',{'formulario':formulario})
 

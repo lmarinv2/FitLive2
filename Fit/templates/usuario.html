@@ -33,6 +33,7 @@
                         <table class="table">
                             <thead>
                                 <tr>
+                                    <th>Id</th>
                                     <th>Nombre</th>
                                     <th>Apellido</th>
                                     <th>Genero</th>
@@ -46,10 +47,11 @@
                                 
                                 {% for registros in registros %}
                                 <tr>
+                                    <td>{{ registros.id }}</td>
                                     <td>{{ registros.nombre }}</td>
                                     <td>{{ registros.apellido }}</td>
                                     <td>{{ registros.sexo }}</td>
-                                    <td>{{ registros.estatura }}</td>
+                                    <td>{{ registros.edad }}</td>
                                     <td>{{ registros.email }}</td>
                                     <td>{{ registros.peso }}</td>
                                     <td>{{ registros.ciudad }}</td>
