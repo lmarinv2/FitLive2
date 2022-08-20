@@ -40,7 +40,6 @@
                                     <th>Edad</th>
                                     <th>Email</th>
                                     <th>Peso(Kg)</th>
-                                    <th>Ciudad</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -48,13 +47,12 @@
                                 {% for registros in registros %}
                                 <tr>
                                     <td>{{ registros.id }}</td>
-                                    <td>{{ registros.nombre }}</td>
-                                    <td>{{ registros.apellido }}</td>
-                                    <td>{{ registros.sexo }}</td>
-                                    <td>{{ registros.edad }}</td>
-                                    <td>{{ registros.email }}</td>
-                                    <td>{{ registros.peso }}</td>
-                                    <td>{{ registros.ciudad }}</td>
+                                    <td>{{ registros.Nombre }}</td>
+                                    <td>{{ registros.Apellido }}</td>
+                                    <td>{{ registros.Genero }}</td>
+                                    <td>{{ registros.Edad }}</td>
+                                    <td>{{ registros.Email }}</td>
+                                    <td>{{ registros.Peso }}</td>
                                 </tr>
                                 {% endfor %}
                             </tbody>

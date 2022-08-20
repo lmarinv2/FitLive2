@@ -17,13 +17,13 @@ def home(request):
 
 def calorias(request):
     registros = registro.objects.all()
-    sexo = registro.objects.values_list('sexo','edad','peso')
+    sexo = registro.objects.values_list('Genero','Edad','Peso')
     sexo = [list(elem) for elem in sexo]
-    edad = registro.objects.values_list('edad')
+    edad = registro.objects.values_list('Edad')
     edad = [list(elem) for elem in edad]
-    email = registro.objects.values_list('email')
+    email = registro.objects.values_list('Email')
     email= [list(elem) for elem in email]
-    peso = registro.objects.values_list('peso')
+    peso = registro.objects.values_list('Peso')
     peso = [list(elem) for elem in peso]
 
     caloria1=0;
@@ -37,7 +37,7 @@ def calorias(request):
                 b=b+1;
 
                 if sexo[a][1] <= 18:
-                    print("sexo: ");
+                    print("edad: ");
                     print(sexo[a][0]);
                     print("edad: ");
                     print(sexo[a][1]);
@@ -199,9 +199,6 @@ def crearusuario(request):
         messages.success(request,"Registado correctamente")
         return redirect('registros');
     return render(request, 'crearusuario.html',{'formulario':formulario})
-
-#def deportes(request):
-# return render(request, 'deportes.html')
 
 def iniciar_sesion(request):
     return render(request, 'iniciar_sesion.html')
