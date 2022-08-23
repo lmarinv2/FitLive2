@@ -1,24 +1,7 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <title> <h1> Lista de Usuarios <h1/> </title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS v5.2.0-beta1 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"  integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-
-  </head>
+{% extends "base.html "%}
+{% block content %}
+<html>
   <body>
-    <nav class="navbar navbar-expand navbar-light bg-light customnavar">
-        <div class="nav navbar-nav">
-            <a class="nav-item nav-link active" href="/home">Inicio <span class="visually-hidden">(current)</span></a>
-            <a class="nav-item nav-link" href="/usuario">Usuarios</a>
-            <a class="nav-item nav-link" href="/calorias">Calorias</a>
-            <a class="nav-item nav-link" href="/deportes">Deportes</a>
-        </div>
-        
-    </nav>
         <div class="container">
             <div class="row">
                 <div class ="col-12"
@@ -63,3 +46,4 @@
     </script>
   </body>
 </html>
+{% endblock %}
