@@ -173,11 +173,11 @@ def deportes(request):
 
 def seleccionar(request):
     
-    if request.GET["email"]:
-        #mensaje="Bienvenido : %r" %request.GET["email"]
-        correo=request.GET["email"]
+    if request.GET["Email"]:
+        mensaje="Bienvenido : %r" %request.GET["email"]
+        correo=request.GET["Email"]
         
-        direcciones=registro.objects.filter(email__icontains=correo)
+        direcciones=registro.objects.filter(Email__icontains=correo)
         return render(request, "seleccion_deporte.html",{"direcciones":direcciones,"query":correo})
     else:
         mensaje="No has introducido ningun Email"
@@ -209,5 +209,9 @@ def seleccion_deporte(request):
 def deporte_seleccionado(request):
     resultado=request.GET["opciones_deporte"]
     return render(request,"deporte_seleccionado.html",{"opciones_deporte":resultado})
+
+def metas(request):
+    
+    return render(request,'metas.html')
 
     

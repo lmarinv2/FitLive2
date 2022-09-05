@@ -11,4 +11,5 @@ urlpatterns = [
     path('seleccionar',views.seleccionar),
     path('seleccion_deporte',views.seleccion_deporte,name='seleccion_deporte'),
     path('deporte_seleccionado',views.deporte_seleccionado,name='deporte_seleccionado'),
+    path('metas',views.metas,name='metas'),
 ]
