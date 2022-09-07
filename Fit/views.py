@@ -9,96 +9,71 @@ from .forms import registroForm
 from django.db.models import F
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
-
+#from django.contrib.auth.tokens import
 
 # Create your views here.
 def home(request):
     return render(request,'home.html')
 
-def usuario(request):
-    if request.GET["Email"]:
-
-        correo=request.GET["Email"]
-        direcciones=registro.objects.filter(Email__icontains=correo)
-        return render(request, "usuario.html",{"registros":direcciones})
-    
-
-
-    #registros = registro.objects.all()
-    #return render(request, 'usuario.html', {'registros':registros})
+def usuario(request,email):
+    direcciones=registro.objects.filter(Email__icontains=email)
+    calorias(request)
+    return render(request, "usuario.html",{"registros":direcciones})
 
 def calorias(request):
-
     registros = registro.objects.all()
-    sexo = registro.objects.values_list('Genero','Edad','Peso')
+    sexo = registro.objects.values_list('Genero','Edad','Peso','Email')
     sexo = [list(elem) for elem in sexo]
     edad = registro.objects.values_list('Edad')
     edad = [list(elem) for elem in edad]
-    email = registro.objects.values_list('Email')
-    email= [list(elem) for elem in email]
     peso = registro.objects.values_list('Peso')
     peso = [list(elem) for elem in peso]
-
-    caloria1=0;
-    print(email)
-    kala =[];
-    a =0;
+    a = 0;
     for i in peso:         
-        b=0;
+        b = 0;
         for j in i :
+            d = 0;
             if sexo[a][b] == 'Femenino':
-                b=b+1;
+                b = b+1;
 
                 if sexo[a][1] <= 18:
-                    caloria1 = 13.384 * sexo[a][2]  + 692.6;
-                    kala.append(int(caloria1))
-                
+                    caloria = 13.384 * sexo[a][2]  + 692.6;
+                    registro.objects.filter(Email=sexo[a][3]).update(calorias=caloria)
+                    
                 if sexo[a][1] > 18 and sexo[a][1] <= 30:
                     caloria = 14.818 * sexo[a][2]  + 486.6;
-                    kala.append(int(caloria))
+                    registro.objects.filter(Email=sexo[a][3]).update(calorias=caloria)
                 
                 if sexo[a][1] > 30 and sexo[a][1] <=60:
                     caloria = 8.126 * sexo[a][2]  + 845.6;
-                    kala.append(int(caloria))
+                    registro.objects.filter(Email=sexo[a][3]).update(calorias=caloria)
                 
                 if sexo[a][1] > 60:
                     caloria = 9.082 * sexo[a][2]  + 658.5;
-                    kala.append(int(caloria))
-
+                    registro.objects.filter(Email=sexo[a][3]).update(calorias=caloria)
 
             else:
                 if sexo[a][1] <= 18:                                             
                     caloria = 17.686 * sexo[a][2]  + 658.2;
-                    kala.append(int(caloria))
+                    registro.objects.filter(Email=sexo[a][3]).update(calorias=caloria)
                 
                 if sexo[a][1] > 18 and sexo[a][1] <= 30:
                     caloria = 15.057 * sexo[a][2]  + 692.2;
-                    kala.append(int(caloria))
+                    registro.objects.filter(Email=sexo[a][3]).update(calorias=caloria)
                 
                 if sexo[a][1] > 30 and sexo[a][1] <=60:
                     caloria = 11.472 * sexo[a][2]  + 873.1;
-                    kala.append(int(caloria))
+                    registro.objects.filter(Email=sexo[a][3]).update(calorias=caloria)
                 
                 if sexo[a][1] > 60:
                     caloria = 11.711 * sexo[a][2]  + 587.7;
-                    kala.append(int(caloria))
+                    registro.objects.filter(Email=sexo[a][3]).update(calorias=caloria)
+        a = a+1;
+
+    return render(request, 'calorias.html')
 
 
-        a=a+1;
-    kalo=[];
-    c=0;
-    for i in sexo:
-        kalo.append([email[c]]);
-        for j in range(1): 
-            kalo[c].append(kala[c]);
-            print("echo")
-            c+=1;
-
-    print(kalo)
-
-    return render(request,'calorias.html',{'c':kalo})
-
-def deportes(request):
+def deportes(request,email):
     return render(request, 'deportes.html')
     registros = registro.objects.all()
     id = registro.objects.values_list('id')
@@ -161,7 +136,7 @@ def crearusuario(request):
     if formulario.is_valid():
         formulario.save()
         messages.success(request,"Registado correctamente")
-        return redirect('registros');
+        return redirect('registros')
     return render(request, 'crearusuario.html',{'formulario':formulario})
 
 def iniciar_sesion(request):

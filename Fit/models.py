@@ -11,7 +11,7 @@ class registro(models.Model):
     Peso = models.IntegerField()
     Edad = models.IntegerField()
     Estatura = models.IntegerField()
-    calorias = models.CharField(max_length=30)
+    calorias = models.CharField(max_length=30,null=True,blank=True)
 
 
     def __str__(self):
@@ -21,4 +21,6 @@ class registro(models.Model):
 
 class Deportes(models.Model):
     Deporte=models.CharField(max_length=20,choices=deportes)
+    Tiempo=models.IntegerField()
+    calorias = models.CharField(max_length=30,null=True,blank=True)
     usuario=models.ForeignKey(registro,null=True,blank=True,on_delete=models.CASCADE)
