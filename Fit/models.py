@@ -1,5 +1,6 @@
 from django.db import models
 from .choices import deportes
+
 class registro(models.Model):
     Nombre = models.CharField(max_length=40)
     Apellido = models.CharField(max_length=40)
@@ -16,6 +17,13 @@ class registro(models.Model):
 #fila = " Nombre: " +self.nombre +" " "Apellido: "+ self.apellido
        return self.Email
 
+class kal(models.Model):
+    caloria = models.IntegerField()
+    usuario=models.ForeignKey(registro,null=True,blank=True,on_delete=models.CASCADE)
+
+#class Calorias(models.Model):
+ #   caloria = models.IntegerField()
+  #  usuario=models.ForeignKey(registro,null=True,blank=True,on_delete=models.CASCADE)
 
 class Deportes(models.Model):
     Deporte=models.CharField(max_length=20,choices=deportes)
