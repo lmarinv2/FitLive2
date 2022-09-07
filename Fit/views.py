@@ -4,7 +4,7 @@ from pyexpat.errors import messages
 import re
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import registro, kal
+from .models import registro
 from .forms import registroForm
 from django.db.models import F
 from django.contrib import messages
@@ -17,13 +17,12 @@ def home(request):
 
 def usuario(request):
     if request.GET["Email"]:
-        mensaje="Bienvenido : %r" %request.GET["Email"]
+
         correo=request.GET["Email"]
         direcciones=registro.objects.filter(Email__icontains=correo)
         return render(request, "usuario.html",{"registros":direcciones})
-    else:
-        mensaje="No has introducido ningun Email"
-      
+    
+
 
     #registros = registro.objects.all()
     #return render(request, 'usuario.html', {'registros':registros})
@@ -96,7 +95,6 @@ def calorias(request):
             c+=1;
 
     print(kalo)
-    
 
     return render(request,'calorias.html',{'c':kalo})
 
