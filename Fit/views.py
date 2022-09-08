@@ -4,8 +4,8 @@ from pyexpat.errors import messages
 import re
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import registro
-from .forms import registroForm
+from .models import registro, Deporte
+from .forms import registroForm,deportesForm
 from django.db.models import F
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
@@ -14,6 +14,17 @@ from django.contrib.auth import authenticate, login
 # Create your views here.
 def home(request):
     return render(request,'home.html')
+
+def crearusuario(request):
+    formulario = registroForm(request.POST or None)
+    if formulario.is_valid():
+        formulario.save()
+        messages.success(request,"Registado correctamente")
+        return redirect('registros')
+    return render(request, 'crearusuario.html',{'formulario':formulario})
+
+def iniciar_sesion(request):
+    return render(request, 'iniciar_sesion.html')
 
 def usuario(request,email):
     direcciones=registro.objects.filter(Email__icontains=email)
@@ -28,6 +39,8 @@ def calorias(request):
     edad = [list(elem) for elem in edad]
     peso = registro.objects.values_list('Peso')
     peso = [list(elem) for elem in peso]
+    email = registro.objects.values_list('Email')
+
     a = 0;
     for i in peso:         
         b = 0;
@@ -70,10 +83,16 @@ def calorias(request):
                     registro.objects.filter(Email=sexo[a][3]).update(calorias=caloria)
         a = a+1;
 
-    return render(request, 'calorias.html')
+def actividad(request,email):
+    formulario = deportesForm(request.POST,instance=Deporte.objects.create(usuario=registro(pk=email)))
+    if formulario.is_valid():
+        formulario.save()
+        messages.success(request,"Registado correctamente")
+        return redirect('registros')
+    return render(request, 'crearusuario.html',{'formulario':formulario})
 
 
-def deportes(request,email):
+def deportes(request):
     return render(request, 'deportes.html')
     registros = registro.objects.all()
     id = registro.objects.values_list('id')
@@ -115,6 +134,7 @@ def deportes(request,email):
 def seleccionar(request):
     
     if request.GET["Email"]:
+        print(request.GET["Email"])
         mensaje="Bienvenido : %r" %request.GET["Email"]
         correo=request.GET["Email"]
         
@@ -125,23 +145,6 @@ def seleccionar(request):
         
     return HttpResponse(mensaje)
 
-def usuariocal(request):
-    registros = registro.objects.all()
-    return render(request, 'calorias.html', {'registros':registros})
-
-
-
-def crearusuario(request):
-    formulario = registroForm(request.POST or None)
-    if formulario.is_valid():
-        formulario.save()
-        messages.success(request,"Registado correctamente")
-        return redirect('registros')
-    return render(request, 'crearusuario.html',{'formulario':formulario})
-
-def iniciar_sesion(request):
-    return render(request, 'iniciar_sesion.html')
-
 def seleccion_deporte(request):
     return render(request,"seleccion_deporte")
 
@@ -150,7 +153,6 @@ def deporte_seleccionado(request):
     return render(request,"deporte_seleccionado.html",{"opciones_deporte":resultado})
 
 def metas(request):
-    
     return render(request,'metas.html')
 
     

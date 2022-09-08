@@ -13,14 +13,12 @@ class registro(models.Model):
     Estatura = models.IntegerField()
     calorias = models.CharField(max_length=30,null=True,blank=True)
 
-
     def __str__(self):
-#fila = " Nombre: " +self.nombre +" " "Apellido: "+ self.apellido
        return self.Email
 
 
-class Deportes(models.Model):
+class Deporte(models.Model):
     Deporte=models.CharField(max_length=20,choices=deportes)
-    Tiempo=models.IntegerField()
-    calorias = models.CharField(max_length=30,null=True,blank=True)
+    Tiempo=models.IntegerField(null=True,blank=True)
+    calorias_deporte = models.CharField(max_length=30,null=True,blank=True)
     usuario=models.ForeignKey(registro,null=True,blank=True,on_delete=models.CASCADE)
