@@ -1,6 +1,7 @@
 from django.db import models
 
-from .choices import deportes
+from .choices import deportes,metas,puntos
+
 
 class registro(models.Model):
     Nombre = models.CharField(max_length=40)
@@ -21,4 +22,11 @@ class Deporte(models.Model):
     Deporte=models.CharField(max_length=20,choices=deportes)
     Tiempo=models.IntegerField(null=True,blank=True)
     calorias_deporte = models.CharField(max_length=30,null=True,blank=True)
+    usuario=models.ForeignKey(registro,null=True,blank=True,on_delete=models.CASCADE)
+    
+    
+class Metas(models.Model):
+    Dificultad=models.CharField(max_length=20,choices=metas)
+    Descripcion=models.TextField(max_length=100)
+    Puntos=models.CharField(max_length=20,choices=puntos)
     usuario=models.ForeignKey(registro,null=True,blank=True,on_delete=models.CASCADE)

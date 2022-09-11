@@ -153,6 +153,13 @@ def deporte_seleccionado(request):
     return render(request,"deporte_seleccionado.html",{"opciones_deporte":resultado})
 
 def metas(request):
-    return render(request,'metas.html')
+    return render(request,'metas.html',)
+
+
+    
+
+def calendario(request):
+    return render(request,'calendario.html')
+
 
     
