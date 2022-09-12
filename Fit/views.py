@@ -4,7 +4,7 @@ from pyexpat.errors import messages
 import re
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import registro, Deporte
+from .models import registro, Deporte,Metas
 from .forms import registroForm,deportesForm
 from django.db.models import F
 from django.contrib import messages
@@ -152,11 +152,22 @@ def deporte_seleccionado(request):
     resultado=request.GET["opciones_deporte"]
     return render(request,"deporte_seleccionado.html",{"opciones_deporte":resultado})
 
-def metas(request):
-    return render(request,'metas.html',)
+def Seleccionar_meta(request):
+    if request.method=='POST':
+        print(request)
+        if request.POST.get('eleccion'):
+            savemeta=Metas()
+            savemeta.eleccion=request.POST.get('eleccion')
+            savemeta.save()
+            messages.success(request, "Meta seleccionada correctamente")
+            
+    return render(request,"Seleccionar_meta.html")
 
-
+ 
     
+    
+
+
 
 def calendario(request):
     return render(request,'calendario.html')

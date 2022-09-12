@@ -26,7 +26,10 @@ class Deporte(models.Model):
     
     
 class Metas(models.Model):
+    eleccion=models.IntegerField(max_length=20,null=True,blank=True)
     Dificultad=models.CharField(max_length=20,choices=metas)
     Descripcion=models.TextField(max_length=100)
     Puntos=models.CharField(max_length=20,choices=puntos)
     usuario=models.ForeignKey(registro,null=True,blank=True,on_delete=models.CASCADE)
+    
+    

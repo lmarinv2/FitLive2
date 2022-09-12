@@ -1,0 +1,102 @@
+
+{% extends "base.html "%}
+{% block content %}
+
+<html>
+    <body>
+        
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Número</th>
+                <th scope="col">Dificultad</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Puntos</th>
+                    
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Principiante</td>
+                <td>•	Registrar 5 sesiones de actividad física seguidos
+                    <br>•	Igual o superior a 30 minutos de duración.</br>
+                  </td>
+                <td>5</td>
+                
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Principiante</td>
+                <td>
+                  •	Registrar 10 sesiones de actividad física
+                  <br>•	Podrá tener máximo dos días sin registrar</br>
+                  •	Igual o superior a 30 minutos de duración
+                  </td>
+                <td>10</td>
+                
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Intermedio</td>
+                <td>•	Registrar 20 sesiones de actividad física
+                  <br>•	Podrá tener máximo 5 días sin registro de actividad</br>            
+                  •	Igual o superior a 45 minutos de duración 
+                  </td>
+                <td>15</td>
+                
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>Intermedio</td>
+                <td>•	Registrar 25 sesiones de actividad física
+                  <br>•	Podrá tener máximo 6 días sin registro de actividad</br>                
+                  •	Igual o superior a 50 minutos de duración 
+                  </td>
+                <td>20</td>
+                
+              </tr>
+              <tr>
+                <th scope="row">5</th>
+                <td>Avanzado</td>
+                <td>•	Registrar 30 sesiones de actividad física
+                  <br>•	Podrá tener máximo de 6 días sin registro de actividad</br>
+                  •	Igual o superior a 60 minutos de duración 
+                  </td>
+                <td>25</td>
+              </tr>
+              <tr>
+                <th scope="row">6</th>
+                <td>Avanzado</td>
+                <td>•	Registrar un mes completo de actividad física
+                  <br>•	Podrá tener máximo 4 días sin registro de actividad</br>
+                  •	Superior a 80 minutos de duración
+                  <br>•	Intensidad media alta.</br> 
+                  </td>
+                <td>30</td>
+              </tr>
+              
+            </tbody>
+          </table>
+          <form method="POST">
+             {% csrf_token %}
+            <select name="Seleccionar_meta">
+                <option selected disabled="true">--Seleccione Meta--</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+            </select>
+            <input type="submit" value="Escoger"/>
+            {% if messages %}
+            {%for result in messages%}
+            <b style="color:green;">{{result}}</b>
+            {%endfor%}
+            {% endif %}
+          </form>
+
+    </body>
+</html>
+{% endblock %}cd

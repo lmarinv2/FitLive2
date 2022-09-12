@@ -10,9 +10,12 @@ deportes=(
 )
 #3 tipos de metas
 metas=(
-    ('p','Principiante'),
-    ('i','Intermedio'),
-    ('a','Avanzado')
+    ('1','Principiante'),
+    ('2','Principiante'),
+    ('3','Intermedio'),
+    ('4','Intermedio'),
+    ('5','Avanzado'),
+    ('6','Avanzado')
 )
 #puntos dados por cada meta
 puntos=(

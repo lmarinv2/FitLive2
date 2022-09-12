@@ -18,5 +18,5 @@ class DeportesAdmin(admin.ModelAdmin):
 
 @admin.register(Metas)
 class MetasAdmin(admin.ModelAdmin):
-    list_display=('usuario','Dificultad','Puntos')
+    list_display=('usuario', 'Descripcion','Dificultad','Puntos')
     
