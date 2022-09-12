@@ -2,11 +2,11 @@
 #Las calorias gastadas es un aproximado para personas entre los 60 y 70
 #kilos  durante una hora de ejercicio moderado
 deportes=(
-    ('840 ','Ciclismo',),
-    ('770 ','Natacion'),
-    ('560 ','Correr'),
-    ('320','Gimnasio'),
-    ('870','Crossfit')
+    ('ci','Ciclismo',),
+    ('na','Natacion'),
+    ('co','Correr'),
+    ('gi','Gimnasio'),
+    ('cr','Crossfit')
 )
 #3 tipos de metas
 metas=(

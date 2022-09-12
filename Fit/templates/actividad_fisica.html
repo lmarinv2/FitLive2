@@ -6,7 +6,6 @@
         <div class="container">
             <div class="row">
                 <div class ="col-12">
-
                     <form enctype ="multipart/form-data" method="post">
                         {% csrf_token %}
                         {% for campo in formulario%}
@@ -20,12 +19,11 @@
                                placeholder="{{ campo.name }}">  
                            </div>
                            <div class = "col-12 help-text"> {{campo.errors}}</div>
-         
-                       {% endfor %}
-                           
+                       {% endfor %}                                                
                        <input name="" id="" class="btn btn-success" type="submit" value="Button" />
-       
                        </form>
+
+                       <b>{{ respuesta }}
 
                     
             </div>
