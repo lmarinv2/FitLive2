@@ -155,13 +155,15 @@ def deporte_seleccionado(request):
 def Seleccionar_meta(request):
     if request.method=='POST':
         print(request)
-        if request.POST.get('eleccion'):
+        if request.POST.get('Seleccionar_meta'):
             savemeta=Metas()
-            savemeta.eleccion=request.POST.get('eleccion')
+            savemeta.eleccion=request.POST.get('Seleccionar_meta')
             savemeta.save()
             messages.success(request, "Meta seleccionada correctamente")
             
+            
     return render(request,"Seleccionar_meta.html")
+
 
  
     
