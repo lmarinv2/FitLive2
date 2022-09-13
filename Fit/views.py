@@ -84,13 +84,135 @@ def calorias(request):
         a = a+1;
 
 def actividad(request,email):
-    formulario = deportesForm(request.POST,instance=Deporte.objects.create(usuario=registro(pk=email)))
-    if formulario.is_valid():
-        formulario.save()
-        messages.success(request,"Registado correctamente")
-        return redirect('registros')
-    return render(request, 'crearusuario.html',{'formulario':formulario})
+    if request.method == "POST":
+        form = deportesForm(request.POST, request.FILES)
+        if form.is_valid():
+            dep = request.POST.get("Deporte")
+            tiem = request.POST.get("Tiempo")
+            usuario = registro.objects.filter(pk=email).values_list('Peso')
+            usuario = [list(elem) for elem in usuario]
+            print(dep)
+            print(usuario[0][0])
+            if dep == "ci":
+                if tiem == "30":
+                    if usuario[0][0] <= 65: 
+                        print("entro")
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 230 )
+                        b.save()
+                    if usuario[0][0] >= 66 and usuario[0][0] <= 75: 
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 280 )
+                        b.save()
+                    if usuario[0][0] >= 76: 
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 330 )
+                        b.save()
+                
+                if tiem == "100":
+                    if usuario[0][0] <= 65: 
+                        print("entro")
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 460 )
+                        b.save()
+                    if usuario[0][0] >= 66 and usuario[0][0] <= 75: 
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 560 )
+                        b.save()
+                    if usuario[0][0] >= 76: 
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 660 )
+                        b.save()
 
+            if dep == "na":
+                if tiem == "30":
+                    if usuario[0][0] <= 65: 
+                        print("entro")
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 180 )
+                        b.save()
+                    if usuario[0][0] >= 66 and usuario[0][0] <= 75: 
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 216 )
+                        b.save()
+                    if usuario[0][0] >= 76: 
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 252 )
+                        b.save()
+
+                if tiem == "100":
+                    if usuario[0][0] <= 65: 
+                        print("entro")
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 360 )
+                        b.save()
+                    if usuario[0][0] >= 66 and usuario[0][0] <= 75: 
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 432 )
+                        b.save()
+                    if usuario[0][0] >= 76: 
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 504 )
+                        b.save()
+            
+            if dep == "cr":
+                if tiem == "30":
+                    if usuario[0][0] <= 65: 
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 180 )
+                        b.save()
+                    if usuario[0][0] >= 66 and usuario[0][0] <= 75: 
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 216 )
+                        b.save()
+                    if usuario[0][0] >= 76: 
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 252 )
+                        b.save()
+
+                if tiem == "100":
+                    if usuario[0][0] <= 65: 
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 360 )
+                        b.save()
+                    if usuario[0][0] >= 66 and usuario[0][0] <= 75: 
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 432 )
+                        b.save()
+                    if usuario[0][0] >= 76: 
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 504 )
+                        b.save()
+            
+            if dep == "gi":
+                if tiem == "30":
+                    if usuario[0][0] <= 65: 
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 90 )
+                        b.save()
+                    if usuario[0][0] >= 66 and usuario[0][0] <= 75: 
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 108 )
+                        b.save()
+                    if usuario[0][0] >= 76: 
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 126 )
+                        b.save()
+                
+                if tiem == "100":
+                    if usuario[0][0] <= 65: 
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 180 )
+                        b.save()
+                    if usuario[0][0] >= 66 and usuario[0][0] <= 75: 
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 216 )
+                        b.save()
+                    if usuario[0][0] >= 76: 
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 252 )
+                        b.save()    
+
+            if dep == "co":
+                if tiem == "30":
+                    if usuario[0][0] <= 65: 
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 135 )
+                        b.save()
+                    if usuario[0][0] >= 66 and usuario[0][0] <= 75: 
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 175 )
+                        b.save()
+                    if usuario[0][0] >= 76: 
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 189 )
+                        b.save()
+                
+                if tiem == "100":
+                    if usuario[0][0] <= 65: 
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 270 )
+                        b.save()
+                    if usuario[0][0] >= 66 and usuario[0][0] <= 75: 
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 350 )
+                        b.save()
+                    if usuario[0][0] >= 76: 
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 378 )
+                        b.save()
+        messages.success(request, "Actividad registrada")
+    return render(request, 'crearusuario.html',{'formulario':form})
 
 def deportes(request):
     return render(request, 'deportes.html')
