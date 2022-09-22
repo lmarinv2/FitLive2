@@ -8,6 +8,12 @@ deportes=(
     ('gi','Gimnasio'),
     ('cr','Crossfit')
 )
+
+tiempo=(
+    ('30 minutos','30',),
+    ('1 hora','100'),
+    ('1 hora y media','130')
+)
 #3 tipos de metas
 metas=(
     ('1','Principiante'),
