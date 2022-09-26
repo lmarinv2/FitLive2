@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from Fit.models import Deporte, registro, Metas
+from Fit.models import Deporte, registro, Metas,Comida
 
 
 # Register your models here.
@@ -19,4 +19,8 @@ class DeportesAdmin(admin.ModelAdmin):
 @admin.register(Metas)
 class MetasAdmin(admin.ModelAdmin):
     list_display=('usuario', 'Descripcion','Dificultad','Puntos')
+
+@admin.register(Comida)
+class ComidaAdmin(admin.ModelAdmin):
+    list_display=('Nombre','Ingredientes','Hora')  
     

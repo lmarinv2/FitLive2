@@ -4,11 +4,14 @@ from pyexpat.errors import messages
 import re
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import registro, Deporte,Metas
+from .models import Comida, registro, Deporte,Metas
 from .forms import registroForm,deportesForm
 from django.db.models import F
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
+from datetime import date, datetime
+
+
 #from django.contrib.auth.tokens import
 
 # Create your views here.
@@ -293,5 +296,11 @@ def Seleccionar_meta(request):
 def calendario(request):
     return render(request,'calendario.html')
 
+def index(request):
+    return render(request,'index.html')
+
 
     
+
+        
+
