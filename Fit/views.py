@@ -218,66 +218,6 @@ def actividad(request,email):
                 pass
 
     return render(request, "actividad_fisica.html",{"formulario":form})
-    
-def deportes(request):
-    return render(request, 'deportes.html')
-    registros = registro.objects.all()
-    id = registro.objects.values_list('id')
-    id = [list(elem) for elem in id]
-    deportes={'1':"Ciclismo",
-            '2':"Natación",
-            '3':"Correr",
-            '4':"Gimnasio",
-            '5':"Crossfit", 
-            }
-    for i in range(len(id)):
-        
-        eleccion = int(input(
-            "Ingrese el numero correspondiente al deporte a practicar:\n(1)->Ciclismo\n(2)->Natacion\n(3)->Correr\n("
-            "4)->Gimnasio\n(5)->Crossfit"))
-        if eleccion == 1:
-            print(f' Has seleccionado ciclismo')
-            print('Este deporte quema 290  y 384 calorias por sesion')
-            registros[i]['deporte']='ciclismo'
-        elif eleccion == 2:
-            print('Has seleccionado Natacion')
-            print('Este deporte quema entre 180 y 250 calorias por sesion')
-            registros[i]['deporte'] = 'Natacion'
-        elif eleccion == 3:
-            print('Has seleccionado Correr')
-            print('Este deporte quema entre 240 y 336 calorias por sesion')
-            registros[i]['deporte'] = 'Correr'
-        elif eleccion == 4:
-            print('Has seleccionado Gimnasio')
-            print('Este deporte quema entre 250 y 295 calorias por sesion')
-            registros[i]['deporte'] = 'Gimnasio'
-        elif eleccion == 5:
-            print('Has seleccionado Crossfit')
-            print('Este deporte quema entre 261 y 289 calorias por sesion')
-            registros[i]['deporte'] = 'Crossfit'
-        elif eleccion < 1 or eleccion > 5:
-            print("Error")
-
-def seleccionar(request):
-    
-    if request.GET["Email"]:
-        print(request.GET["Email"])
-        mensaje="Bienvenido : %r" %request.GET["Email"]
-        correo=request.GET["Email"]
-        
-        direcciones=registro.objects.filter(Email__icontains=correo)
-        return render(request, "seleccion_deporte.html",{"direcciones":direcciones,"query":correo})
-    else:
-        mensaje="No has introducido ningun Email"
-        
-    return HttpResponse(mensaje)
-
-def seleccion_deporte(request):
-    return render(request,"seleccion_deporte")
-
-def deporte_seleccionado(request):
-    resultado=request.GET["opciones_deporte"]
-    return render(request,"deporte_seleccionado.html",{"opciones_deporte":resultado})
 
 def Seleccionar_meta(request):
     if request.method=='POST':
@@ -290,8 +230,6 @@ def Seleccionar_meta(request):
             
             
     return render(request,"Seleccionar_meta.html")
-
-
 
 def calendario(request):
     return render(request,'calendario.html')
