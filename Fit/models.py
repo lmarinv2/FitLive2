@@ -15,7 +15,7 @@ class registro(models.Model):
     calorias = models.CharField(max_length=30,null=True,blank=True)
 
     def __str__(self):
-       return self.Email
+        return self.Email
 
 
 class Deporte(models.Model):
@@ -31,5 +31,12 @@ class Metas(models.Model):
     Descripcion=models.TextField(max_length=100)
     Puntos=models.CharField(max_length=20,choices=puntos)
     usuario=models.ForeignKey(registro,null=True,blank=True,on_delete=models.CASCADE)
+    
+class Comida(models.Model):
+    Nombre = models.CharField(max_length=200)
+    Ingredientes = models.TextField()
+    Hora=models.DateTimeField()
+    usuario=models.ForeignKey(registro,null=True,blank=True,on_delete=models.CASCADE)
+    
     
     

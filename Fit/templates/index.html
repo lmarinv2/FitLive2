@@ -1,0 +1,67 @@
+<!Doctype HTML>
+{% load static %}
+<html lang="en">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+{% load static %}
+<head>
+    <title> FitLife </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'index_style.css' %}">
+    <link rel="icon" href="Fit\static\imagenes\Logo_fitlife.jpg">
+    
+    
+
+</head>
+<body>
+    {% load static %}
+    <img  src="{%static "imagenes\Logo_fitlife.jpg"%}" alt="imagen no found">
+    <p class="h3">Un cuerpo sano es una vida sana </p>
+    <hr class="my-2">
+    <p class="lead2">
+        <a class="btn btn-primary btn-lg" href="/iniciar_sesion" role="button">Iniciar sesion</a>
+    </p>
+
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" href="/crearusuario" role="button">Registrarse</a>
+    </p>
+</hr>
+
+    <header>
+        
+        <div class="contenedor" id="uno">
+            <i class="fa-solid fa-user"></i>
+            <p class="texto"href="#" role="button">USUARIO</p>
+            
+        </div>
+
+        <div class="contenedor" id="dos">
+            <a href="/calendario"><i class="fa-solid fa-calendar-days" role="button"></i></a>
+            <p class="texto">CALENDARIO</p>
+            
+            
+        </div>
+
+        <div class="contenedor" id="tres">
+            <i class="fa-solid fa-bowl-food" href="#"  role="button"></i>
+            <p class="texto">RECETAS</p>
+            
+            
+        </div>
+
+        <div class="contenedor" id="cuatro">
+            <i class="fa-solid fa-dumbbell"href="#"  role="button"></i>
+            <p class="texto">ACTIVIDAD FISICA</p>
+            
+        
+        </div>
+    </header>
+
+
+
+
+
+
+</body>
+</html>
