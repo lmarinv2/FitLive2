@@ -10,7 +10,7 @@ from Fit.models import Deporte, registro, Metas
 
 @admin.register(registro)
 class registroAdmin(admin.ModelAdmin):
-    list_display=('id','Nombre','Apellido','Email')
+    list_display=('Nombre','Apellido','Email')
 
 @admin.register(Deporte)
 class DeportesAdmin(admin.ModelAdmin):

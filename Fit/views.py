@@ -24,7 +24,7 @@ def crearusuario(request):
     return render(request, 'crearusuario.html',{'formulario':formulario})
 
 def iniciar_sesion(request):
-    return render(request, 'iniciar_sesion.html')
+    return render(request, 'registration/login.html')
 
 def usuario(request,email):
     direcciones=registro.objects.filter(Email__icontains=email)
