@@ -1,11 +1,11 @@
 from django.db import models
 
-from .choices import deportes,metas,puntos
+from .choices import deportes,metas,puntos,comida,carbohidratos,proteina,azucar
 
 
 class registro(models.Model):
     Nombre = models.CharField(max_length=40)
-    Apellido = models.CharField(max_length=40)
+    Apellido = models.CharField(max_length=40)  
     Genero = models.CharField(max_length=40)
     Fecha_nacimiento= models.DateField()
     Email = models.EmailField()
@@ -33,8 +33,10 @@ class Metas(models.Model):
     usuario=models.ForeignKey(registro,null=True,blank=True,on_delete=models.CASCADE)
     
 class Comida(models.Model):
-    Nombre = models.CharField(max_length=200)
-    Ingredientes = models.TextField()
+    Comida=models.CharField(max_length=100,choices=comida)
+    Carbohidratos=models.CharField(max_length=100,choices=carbohidratos)
+    Proteina=models.CharField(max_length=100,choices=proteina)
+    Azucar=models.CharField(max_length=100,choices=azucar)
     Hora=models.DateTimeField()
     usuario=models.ForeignKey(registro,null=True,blank=True,on_delete=models.CASCADE)
     

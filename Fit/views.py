@@ -220,6 +220,7 @@ def actividad(request,email):
     return render(request, "actividad_fisica.html",{"formulario":form})
 
 def Seleccionar_meta(request):
+    
     if request.method=='POST':
         print(request)
         if request.POST.get('Seleccionar_meta'):
@@ -230,6 +231,7 @@ def Seleccionar_meta(request):
             
             
     return render(request,"Seleccionar_meta.html")
+
 
 def calendario(request):
     return render(request,'calendario.html')

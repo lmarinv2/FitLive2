@@ -32,5 +32,34 @@ puntos=(
     ('Avanzado','25'),
     ('Intermedio','30'),
     
+)
+comida=(
+    ('Desayuno','Desayuno'),
+    ('Almuerzo','Almuerzo'),
+    ('Cena','Cena'),
+    ('Snacks','Snacks'),
+)
+carbohidratos=(
+    ('Porcion','100 gramos'),
+    ('2_Porciones','200 gramos'),
+    ('3_porciones','300 gramos'),
+    ('+3_porciones','>300 gramos'),
+
+)
+proteina=(
+    ('Porcion','<100 gramos'),
+    ('2_Porcione','<150 gramos'),
+    ('3_porcione','<200 gramos'),
+    ('4_porcione','<250 gramos'),
+    ('5_porcione','>300gramos',),
+)
+azucar=(
+    ('Porcion','<10 gramos'),
+    ('2_Porciones','<50 gramos'),
+    ('3_porciones','<100 gramos'),
+    ('4_porciones','<200 gramos'),
+    ('5_porciones','>300gramos',),
+    
+    
     
 )
