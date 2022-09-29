@@ -11,7 +11,7 @@
                         {% for campo in formulario%}
                            <div class="mb-3">
                              <label for="" class="form-label">{{ campo.name }}</label>
-                             <input type="{{ compo.field.widget.input_type }}"
+                             <input type="{{ compo.field.widget }}"
                                class="form-control"
                                name="{{ campo.name }}" 
                                id="" 
@@ -20,7 +20,7 @@
                            </div>
                            <div class = "col-12 help-text"> {{campo.errors}}</div>
                        {% endfor %}                                                
-                       <input name="" id="" class="btn btn-success" type="submit" value="Button" />
+                       <input name="" id="" class="btn btn-secondary" type="submit" value="Button" />
                        </form>        
             </div>
             </div>

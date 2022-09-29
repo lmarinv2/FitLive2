@@ -1,18 +1,19 @@
 from dataclasses import field, fields
 from socket import fromshare
 from django import forms
-from .models import registro, Deporte
+from .models import registro 
+from .choices import deportes, tiempo
 
 class registroForm(forms.ModelForm):
     class Meta:
        model = registro
-       fields = '__all__'
+       exclude = ['calorias']
 
-class deportesForm(forms.ModelForm):
-    class Meta:
-       model = Deporte
-       fields = [
-            'Deporte',
-            'Tiempo',
-       ]
+class deportesForm(forms.Form):
+    Deporte = forms.CharField(
+        widget=forms.Select(choices=deportes),
+    )
+    Tiempo = forms.IntegerField(
+        widget=forms.Select(choices=tiempo),
+    )
 
