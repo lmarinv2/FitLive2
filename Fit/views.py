@@ -10,6 +10,7 @@ from django.db.models import F
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from datetime import date, datetime
+from datetime import datetime
 
 
 #from django.contrib.auth.tokens import
@@ -238,6 +239,10 @@ def calendario(request):
 
 def index(request):
     return render(request,'index.html')
+
+def registro_comidas(request):
+    return render(request,'registro_comidas.html')
+    print(datetime.today())
 
 
     

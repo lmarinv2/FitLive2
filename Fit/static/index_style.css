@@ -8,7 +8,7 @@ header{
     margin:50px auto;
     width:1200px;
     height:230px;
-    background-color:rgb(10, 5, 5);
+    background-color:rgb(252, 248, 248);
 }
 
 div.contenedor{
@@ -18,22 +18,22 @@ div.contenedor{
     -webkit-transition:height .4s ;
 }
 div#uno{
-    background-color: rgb(208,101,3);
-    box-shadow: 0px 8px 15px rgba(74, 238, 9, 0.877);
+    background-color: rgb(206, 76, 16);
+    box-shadow: 0px 8px 15px rgba(4, 222, 238, 0.877);
     
 }
 div#dos{
-    background-color: rgb(209, 133, 61);
-    box-shadow: 0px 8px 15px rgba(74, 238, 9, 0.877);
+    background-color: rgb(247, 97, 10);
+    box-shadow: 0px 8px 15px rgba(4, 222, 238, 0.877);
 }
 div#tres{
     background-color: rgb(206, 76, 16);
-    box-shadow: 0px 8px 15px rgba(74, 238, 9, 0.877);
+    box-shadow: 0px 8px 15px rgba(4, 222, 238, 0.877);
     
 }
 div#cuatro{
     background-color: rgb(247, 97, 10);
-    box-shadow: 0px 8px 15px rgba(74, 238, 9, 0.877);
+    box-shadow: 0px 8px 15px rgba(4, 222, 238, 0.877);
 }
 i.fa-solid.fa-user{
     display: block;
@@ -113,7 +113,7 @@ div.contenedor:hover i.fa-solid.fa-dumbbell{
 }
 p.h3{
     padding-left:20px;
-    color:coral;
+    color:rgb(248, 87, 7);
     vertical-align: middle;
     position: relative;
     line-height: 2;
@@ -129,7 +129,7 @@ p.lead{
 	right: 300px;
     top:0px;
 	transition: all 300ms ease 0ms;
-	box-shadow: 0px 8px 15px rgba(238, 9, 9, 0.877);
+	box-shadow: 0px 8px 15px rgba(127, 9, 238, 0.877);
 	z-index: 99;
     
     
@@ -150,5 +150,6 @@ p.lead2{
     
     
 }
-
-
+h1.display_3{
+    right: 40px;
+}

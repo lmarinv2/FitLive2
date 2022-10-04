@@ -13,6 +13,8 @@ urlpatterns = [
     path('ejercicio/<int:email>', views.actividad , name='actividad'),
     path('calendario',views.calendario,name='calendario'),
     path('index',views.index,name='index'),
+    path('registro_comidas',views.registro_comidas,name='registro_comidas'),
+    
     
 
 ]

@@ -1,0 +1,91 @@
+<!Doctype HTML>
+
+
+{% load static %}
+<html lang="en">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'styles_registro.css' %}">
+    
+    
+    
+        <title>
+            Registro
+        </title>
+    </head>
+    
+    
+    <body>
+        <header>
+            <h1>Tu registro de comidas para:</h1>
+            <script>
+                (function(){
+                var fecha=new Date();
+                document.write(fecha);
+                }())
+
+
+
+            </script>
+
+        </header>
+        {% load static %}
+        <div class="contenedor" id="uno">
+            <i class="fa-solid fa-mug-saucer"<p class="texto"> Desayuno </p></i>
+        </div>
+        <br>
+        <div class="contenedor" id="uno">
+            <i class="fa-solid fa-bowl-food"<p class="texto"> Almuerzo </p></i>
+        </div>
+        <br>
+        <div class="contenedor" id="uno">
+            <i class="fa-solid fa-plate-wheat"<p class="texto"> Cena </p></i>
+        </div>
+        <br>
+        <div class="contenedor" id="uno">
+            <i class="fa-solid fa-cookie-bite"<p class="texto"> Snack </p></i>
+        </div>
+
+
+
+    </body>
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Calorias (kcal)</th>
+      <th scope="col">Carbohidratos (g)</th>
+      <th scope="col">Proteinas (g)</th>
+      <th scope="col">Acuzar (g)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Totales</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      
+    </tr>
+    <tr>
+      <th scope="row">Promedio diario</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      
+    </tr>
+    <tr>
+      <th scope="row">Restantes</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+    </html>
