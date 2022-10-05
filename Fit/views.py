@@ -32,18 +32,16 @@ def iniciar_sesion(request):
 
 def usuario(request,email):
     direcciones=registro.objects.filter(Email__icontains=email)
-    calorias(request)
+    calorias()
     return render(request, "usuario.html",{"registros":direcciones})
 
-def calorias(request):
-    registros = registro.objects.all()
+def calorias():
     sexo = registro.objects.values_list('Genero','Edad','Peso','Email')
     sexo = [list(elem) for elem in sexo]
     edad = registro.objects.values_list('Edad')
     edad = [list(elem) for elem in edad]
     peso = registro.objects.values_list('Peso')
     peso = [list(elem) for elem in peso]
-    email = registro.objects.values_list('Email')
 
     a = 0;
     for i in peso:         
@@ -87,138 +85,142 @@ def calorias(request):
                     registro.objects.filter(Email=sexo[a][3]).update(calorias=caloria)
         a = a+1;
 
+def actividad_fisica(request,email):
+
+    return render(request, "actividad_fisica1.html")
+
+
 def actividad(request,email):
-    form = deportesForm(request.POST, request.FILES)
+    print(request.POST.get("Fecha"))
     if request.method == "POST":
-        if form.is_valid():
             dep = request.POST.get("Deporte")
             tiem = request.POST.get("Tiempo")
+            fech = request.POST.get("Fecha")
             usuario = registro.objects.filter(pk=email).values_list('Peso')
             usuario = [list(elem) for elem in usuario]
-            print(dep)
-            print(usuario[0][0])
             if dep == "ci":
                 if tiem == "30":
                     if usuario[0][0] <= 65: 
                         print("entro")
-                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 230 )
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 230, Fecha =fech)
                         b.save()
                     elif usuario[0][0] >= 66 and usuario[0][0] <= 75: 
-                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 280 )
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 280, Fecha =fech )
                         b.save()
                     elif usuario[0][0] >= 76: 
-                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 330 )
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 330, Fecha =fech )
                         b.save()
                 
                 elif tiem == "100":
                     if usuario[0][0] <= 65: 
                         print("entro")
-                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 460 )
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 460, Fecha =fech )
                         b.save()
                     elif usuario[0][0] >= 66 and usuario[0][0] <= 75: 
-                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 560 )
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 560, Fecha =fech )
                         b.save()
                     elif usuario[0][0] >= 76: 
-                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 660 )
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 660, Fecha =fech )
                         b.save()
 
             elif dep == "na":
                 if tiem == "30":
                     if usuario[0][0] <= 65: 
                         print("entro")
-                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 180 )
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 180, Fecha =fech )
                         b.save()
                     elif usuario[0][0] >= 66 and usuario[0][0] <= 75: 
-                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 216 )
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 216, Fecha =fech )
                         b.save()
                     elif usuario[0][0] >= 76: 
-                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 252 )
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 252, Fecha =fech )
                         b.save()
 
                 elif tiem == "100":
                     if usuario[0][0] <= 65: 
                         print("entro")
-                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 360 )
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 360, Fecha =fech )
                         b.save()
                     elif usuario[0][0] >= 66 and usuario[0][0] <= 75: 
-                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 432 )
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 432, Fecha =fech )
                         b.save()
                     elif usuario[0][0] >= 76: 
-                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 504 )
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 504, Fecha =fech )
                         b.save()
             
             elif dep == "cr":
                 if tiem == "30":
                     if usuario[0][0] <= 65: 
-                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 180 )
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 180, Fecha =fech )
                         b.save()
                     elif usuario[0][0] >= 66 and usuario[0][0] <= 75: 
-                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 216 )
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 216, Fecha =fech )
                         b.save()
                     elif usuario[0][0] >= 76: 
-                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 252 )
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 252, Fecha =fech )
                         b.save()
 
                 elif tiem == "100":
                     if usuario[0][0] <= 65: 
-                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 360 )
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 360, Fecha =fech )
                         b.save()
                     elif usuario[0][0] >= 66 and usuario[0][0] <= 75: 
-                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 432 )
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 432, Fecha =fech )
                         b.save()
                     elif usuario[0][0] >= 76: 
-                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 504 )
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 504, Fecha =fech )
                         b.save()
             
             elif dep == "gi":
                 if tiem == "30":
                     if usuario[0][0] <= 65: 
-                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 90 )
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 90, Fecha =fech )
                         b.save()
                     elif usuario[0][0] >= 66 and usuario[0][0] <= 75: 
-                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 108 )
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 108, Fecha =fech )
                         b.save()
                     elif usuario[0][0] >= 76: 
-                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 126 )
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 126, Fecha =fech )
                         b.save()
                 
                 elif tiem == "100":
                     if usuario[0][0] <= 65: 
-                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 180 )
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 180, Fecha =fech )
                         b.save()
                     elif usuario[0][0] >= 66 and usuario[0][0] <= 75: 
-                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 216 )
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 216, Fecha =fech )
                         b.save()
                     elif usuario[0][0] >= 76: 
-                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 252 )
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 252, Fecha =fech )
                         b.save()    
 
             elif dep == "co":
                 if tiem == "30":
                     if usuario[0][0] <= 65: 
-                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 135 )
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 135, Fecha =fech )
                         b.save()
                     elif usuario[0][0] >= 66 and usuario[0][0] <= 75: 
-                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 175 )
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 175, Fecha =fech )
                         b.save()
                     elif usuario[0][0] >= 76: 
-                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 189 )
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 189, Fecha =fech )
                         b.save()
                 
                 elif tiem == "100":
                     if usuario[0][0] <= 65: 
-                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 270 )
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 270, Fecha =fech )
                         b.save()
                     elif usuario[0][0] >= 66 and usuario[0][0] <= 75: 
-                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 350 )
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 350, Fecha =fech )
                         b.save()
                     elif usuario[0][0] >= 76: 
-                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 378 )
+                        b = Deporte(usuario=registro(pk=email), Deporte=dep, Tiempo= tiem, calorias_deporte = 378, Fecha =fech )
                         b.save()
             else:
                 pass
+            messages.success(request, "Deporte añadido")
 
-    return render(request, "actividad_fisica.html",{"formulario":form})
+    return render(request, "actividad_fisica.html")
 
 def Seleccionar_meta(request):
     

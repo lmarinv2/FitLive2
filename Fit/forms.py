@@ -10,10 +10,11 @@ class registroForm(forms.ModelForm):
        exclude = ['calorias']
 
 class deportesForm(forms.Form):
-    Deporte = forms.CharField(
-        widget=forms.Select(choices=deportes),
+    Deporte = forms.TypedChoiceField(
+        widget=forms.Select(choices=deportes)
     )
     Tiempo = forms.IntegerField(
-        widget=forms.Select(choices=tiempo),
+        widget=forms.Select(choices=tiempo)
     )
+    Fecha = forms.DateField()
 

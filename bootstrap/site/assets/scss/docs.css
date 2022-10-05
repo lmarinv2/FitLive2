@@ -878,8 +878,8 @@
 .icon-link {
   display: flex;
   align-items: center;
-  -webkit-text-decoration-color: rgba(254, 178, 114, 0.5);
-          text-decoration-color: rgba(254, 178, 114, 0.5);
+  -webkit-text-decoration-color: rgba(255, 115, 0, 0.5);
+          text-decoration-color: rgba(255, 115, 0, 0.5);
   text-underline-offset: 0.5rem;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
@@ -1091,7 +1091,7 @@
   text-decoration: none;
 }
 .bd-footer a:hover, .bd-footer a:focus {
-  color: #feb272;
+  color: rgba(255, 115, 0, 0.8431372549);
   text-decoration: underline;
 }
 
@@ -1644,7 +1644,7 @@
 
 .swatch-orange {
   color: #000;
-  background-color: #fd7e14;
+  background-color: rgba(255, 115, 0, 0.8431372549);
 }
 .swatch-orange::after {
   position: absolute;
@@ -1654,8 +1654,8 @@
   font-size: 0.75rem;
   line-height: 1.35;
   white-space: pre;
-  content: "8.17" "\a" "2.57" "\a" "8.17";
-  background-color: #fd7e14;
+  content: "7.70" "\a" "2.72" "\a" "7.70";
+  background-color: rgba(255, 115, 0, 0.8431372549);
   background-image: linear-gradient(to bottom, transparent 0.25rem, #000 0.25rem 0.75rem, transparent 0.75rem 1.25rem, #fff 1.25rem 1.75rem, transparent 1.75rem 2.25rem, #000 2.25rem 2.75rem, transparent 2.75rem);
   background-repeat: no-repeat;
   background-size: 0.5rem 100%;
@@ -2059,47 +2059,47 @@
 
 .bd-orange-100 {
   color: #000;
-  background-color: #ffe5d0;
+  background-color: rgba(255, 233, 216, 0.968627451);
 }
 
 .bd-orange-200 {
   color: #000;
-  background-color: #fecba1;
+  background-color: rgba(255, 209, 172, 0.937254902);
 }
 
 .bd-orange-300 {
   color: #000;
-  background-color: #feb272;
+  background-color: rgba(255, 182, 122, 0.9058823529);
 }
 
 .bd-orange-400 {
   color: #000;
-  background-color: #fd9843;
+  background-color: rgba(255, 151, 65, 0.8745098039);
 }
 
 .bd-orange-500 {
   color: #000;
-  background-color: #fd7e14;
+  background-color: rgba(255, 115, 0, 0.8431372549);
 }
 
 .bd-orange-600 {
-  color: #000;
-  background-color: #ca6510;
+  color: #fff;
+  background-color: rgba(190, 86, 0, 0.8745098039);
 }
 
 .bd-orange-700 {
   color: #fff;
-  background-color: #984c0c;
+  background-color: rgba(133, 60, 0, 0.9058823529);
 }
 
 .bd-orange-800 {
   color: #fff;
-  background-color: #653208;
+  background-color: rgba(83, 38, 0, 0.937254902);
 }
 
 .bd-orange-900 {
   color: #fff;
-  background-color: #331904;
+  background-color: rgba(39, 18, 0, 0.968627451);
 }
 
 .bd-yellow-100 {
@@ -2366,7 +2366,7 @@
 }
 .btn-clipboard:hover,
 .btn-edit:hover {
-  color: #feb272;
+  color: rgba(255, 115, 0, 0.8431372549);
 }
 .btn-clipboard:focus,
 .btn-edit:focus {
@@ -2705,7 +2705,7 @@
 .anchor-link {
   padding: 0 0.175rem;
   font-weight: 400;
-  color: rgba(254, 178, 114, 0.5);
+  color: rgba(255, 115, 0, 0.5);
   text-decoration: none;
   opacity: 0;
   transition: color 0.15s ease-in-out, opacity 0.15s ease-in-out;
@@ -2719,7 +2719,7 @@
   content: "#";
 }
 .anchor-link:focus, .anchor-link:hover, :hover > .anchor-link, :target > .anchor-link {
-  color: #feb272;
+  color: rgba(255, 115, 0, 0.8431372549);
   text-decoration: none;
   opacity: 1;
 }/*# sourceMappingURL=docs.css.map */
