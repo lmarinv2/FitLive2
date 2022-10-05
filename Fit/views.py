@@ -235,6 +235,8 @@ def Seleccionar_meta(request):
             
     return render(request,"Seleccionar_meta.html")
 
+def alimentacion(request):
+    return render(request,'alimentacion.html')
 
 def calendario(request):
     return render(request,'calendario.html')
