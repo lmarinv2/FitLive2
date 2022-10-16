@@ -15,6 +15,7 @@ urlpatterns = [
     path('index',views.index,name='index'),
     path('registro_comidas',views.registro_comidas,name='registro_comidas'),
     path('alimentacion',views.alimentacion,name='alimentacion'),
+    path('agregar_comida',views.agregar_comida,name='agregar_comida'),
     
     
     

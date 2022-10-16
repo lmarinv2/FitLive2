@@ -1,7 +1,9 @@
 from dataclasses import field, fields
+from re import A
 from socket import fromshare
+from tkinter import Widget
 from django import forms
-from .models import registro 
+from .models import registro, Comida
 from .choices import deportes, tiempo
 
 class registroForm(forms.ModelForm):
@@ -17,4 +19,36 @@ class deportesForm(forms.Form):
         widget=forms.Select(choices=tiempo)
     )
     Fecha = forms.DateField()
+    
+class comidaForm(forms.ModelForm):
+     class Meta:
+         model=Comida
+         fields=[
+            'Comida',
+            'Carbohidratos',
+            'Proteina',
+            'Azucar',
+            'Hora',
+        
+            ]
+         
+         labels={
+            'Comida':'Comida',
+            'Carbohidratos':'Carbohidratos',
+            'Proteina':'Proteina',
+            'Azucar':'Azucar',
+            'Hora':'Hora',
+        }
+         widgets={
+            'Comida':forms.CheckboxSelectMultiple(),
+            'Carbohidratos':forms.Select(attrs={'class':'form-control'}),
+            'Proteina':forms.Select(attrs={'class':'form-control'}),
+            'Azucar':forms.Select(attrs={'class':'form-control'}),
+            'Hora':forms.Select(attrs={'class':'form-control'}),
+            
+            
+        }
+    
+        
+    
 

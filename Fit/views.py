@@ -5,7 +5,7 @@ import re
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Comida, registro, Deporte,Metas
-from .forms import registroForm,deportesForm
+from .forms import comidaForm, registroForm,deportesForm
 from django.db.models import F
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
@@ -248,6 +248,21 @@ def registro_comidas(request):
     return render(request,'registro_comidas.html')
     print(datetime.today())
 
+def agregar_comida(request):
+   
+    return render(request,'agregar_comida.html')
+
+
+def agregar_comida(request):
+    if request.method=='POST':
+        form=comidaForm(request.POST)
+       
+        form.save()
+        return redirect('registro_comidas')
+    else:
+        form=comidaForm()
+        
+    return render(request,'agregar_comida.html',{'form':form})
 
     
 
