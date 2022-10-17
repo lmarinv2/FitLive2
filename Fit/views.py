@@ -4,7 +4,7 @@ from pyexpat.errors import messages
 import re
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Comida, registro, Deporte,Metas
+from .models import Bedidas, Comida, registro, Deporte,Metas
 from .forms import comidaForm, registroForm,deportesForm
 from django.db.models import F
 from django.contrib import messages
@@ -237,6 +237,55 @@ def Seleccionar_meta(request):
 
 def alimentacion(request):
     return render(request,'alimentacion.html')
+
+def registro_bebidas(request):
+    return render(request,'registro_bebidas.html')    
+
+def agregar_bebidas(request,email):
+    if request.method == "POST":
+            beb = request.POST.get("Bebida")
+            cant = request.POST.get("Cantidad")
+            fech = request.POST.get("Fecha")
+            print(request.POST.get("Fecha"))
+            if beb == "Agua":
+                        b = Bedidas(usuario=registro(pk=email), Bedida=beb, Cantidad= cant, calorias_Bedida = 0, Fecha =fech)
+                        b.save()
+            elif beb == "Jugo":
+                if cant == "250":
+                    b = Bedidas(usuario=registro(pk=email), Bebida=beb, Cantidad= cant, calorias_Bedida = 137, Fecha =fech )
+                    b.save()
+                elif cant == "500":
+                    b = Bedidas(usuario=registro(pk=email), Bebida=beb, Cantidad= cant, calorias_Bedida = 275, Fecha =fech )
+                    b.save()
+                elif cant == "1000":
+                    b = Bedidas(usuario=registro(pk=email), Bebida=beb, Cantidad= cant, calorias_Bedida = 550, Fecha =fech )
+                    b.save()
+                   
+            elif beb == "Gaseosa":
+                if cant == "250":
+                    b = Bedidas(usuario=registro(pk=email), Bebida=beb, Cantidad= cant, calorias_Bedida = 102, Fecha =fech )
+                    b.save()
+                elif cant == "500":
+                    b = Bedidas(usuario=registro(pk=email), Bebida=beb, Cantidad= cant, calorias_Bedida = 205, Fecha =fech )
+                    b.save()
+                elif cant == "1000":
+                    b = Bedidas(usuario=registro(pk=email), Bebida=beb, Cantidad= cant, calorias_Bedida = 410, Fecha =fech )
+                    b.save()
+
+            elif beb == "Infusion":
+                if cant == "250":
+                    b = Bedidas(usuario=registro(pk=email), Bebida=beb, Cantidad= cant, calorias_Bedida = 2, Fecha =fech )
+                    b.save()
+                elif cant == "500":
+                    b = Bedidas(usuario=registro(pk=email), Bebida=beb, Cantidad= cant, calorias_Bedida = 4, Fecha =fech )
+                    b.save()
+                elif cant == "1000":
+                    b = Bedidas(usuario=registro(pk=email), Bebida=beb, Cantidad= cant, calorias_Bedida = 6, Fecha =fech )
+                    b.save()
+            else:
+                pass
+            messages.success(request, "Bebida añadida")
+    return render(request,'agregar_bebidas.html')
 
 def calendario(request):
     return render(request,'calendario.html')

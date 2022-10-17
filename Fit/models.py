@@ -40,6 +40,13 @@ class Comida(models.Model):
     Azucar=models.CharField(max_length=100,choices=azucar)
     Hora=models.DateTimeField()
     usuario=models.ForeignKey(registro,null=True,blank=True,on_delete=models.CASCADE)
+
+class Bedidas(models.Model):
+    Bebida=models.CharField(max_length=20)
+    Cantidad=models.IntegerField(null=True,blank=True)
+    Fecha=models.DateField(null=True,blank=True)
+    calorias_Bedida = models.CharField(max_length=30,null=True,blank=True)
+    usuario=models.ForeignKey(registro,null=True,blank=True,on_delete=models.CASCADE)
     
     
     
