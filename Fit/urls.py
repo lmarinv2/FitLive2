@@ -4,12 +4,13 @@ from django.contrib.auth.models import User
 
 urlpatterns = [
     path('',views.index, name='inicio'),
+    path('home',views.home, name='home'),
     path('crearusuario', views.crearusuario , name='crearusuario'),
-    path('registration/login', views.iniciar_sesion,name='login'),
-    path('perfil/<str:email>', views.usuario , name='usuario'),
+   #path('registration/login', views.iniciar_sesion,name='login'),
+    path('perfil/', views.usuario , name='usuario'),
     path('Seleccionar_meta/',views.Seleccionar_meta,name='Seleccionar_meta'),
-    path('ejercicio/<int:email>', views.actividad , name='actividad'),
-    path('actividad_fisica/<int:email>', views.actividad_fisica , name='actividad_fisica'),
+    path('ejercicio/', views.actividad , name='actividad'),
+    path('actividad_fisica/', views.actividad_fisica , name='actividad_fisica'),
     path('calendario',views.calendario,name='calendario'),
     path('index',views.index,name='index'),
     path('registro_comidas',views.registro_comidas,name='registro_comidas'),
