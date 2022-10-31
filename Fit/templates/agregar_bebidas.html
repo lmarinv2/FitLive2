@@ -23,10 +23,17 @@
         <div class="container">
             <div class="row">
                 <div class ="col-12">
+                  <br>
                     <form enctype ="multipart/form-data" method="post">
                         {% csrf_token %}
                         <h1 figure class="text-center text-dark bg-primary">AGREGAR BEBIDAS</td></h1>
                         <br>
+                        <h3>Para el registro de hidratación, selecciona la bebida y la cantidad, y finalmente la fecha en la que 
+                          tomaste esta bedida</h3>
+                          <br>
+                        <div class="container">
+                          <div class="row justify-content-center">
+                              <div class ="col-10">
                           <select class="form-select" name="Bebida" aria-label="Default select example">
                             <option selected>Seleccione un bebida</option>
                             <option value="Agua">Agua</option>
@@ -52,15 +59,16 @@
                             min="2022-06-01" max="2023-05-31"> 
                           </div> 
 
-                          <br>                                                  
+                          <br> 
+                          <div class="d-grid gap-2 col-4 mx-auto">    
+                            <br>                                                                                     
                        <input class="btn btn-secondary btn-lg" type="submit" value="Agregar" >
-                       <br>
-                       <br>
-                       <a class="btn btn-secondary btn-lg" href="/actividad_fisica/ " role="button">Volver</a>
+                      
+                       <a class="btn btn-secondary btn-lg" href="/alimentacion " role="button">Volver</a>
                        
                        {% if messages %}
                        {%for result in messages%}
-                       <b style="color:green;">{{result}}</b>
+                       <b style="color:green;"><h2><strong>{{result}}</strong></h2></b>
                        {%endfor%}
                        {% endif %}                      </form>    
                            

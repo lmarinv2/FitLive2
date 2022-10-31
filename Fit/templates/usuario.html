@@ -22,29 +22,22 @@
 <!DOCTYPE html>
   <body>
         <div class="container">
-            <div class="row">
-                <div class ="col-12"
+            <div class="row justify-content-center">
+                <div class ="col-12">
 
-                <div class="card">
-                    <div class="card-header"> 
-                    </div>
                     <tr>
                     <br>
                     <div class="card-body">
                         {% for registros in registros %}
-                        <h1 class="card-title" figure class="text-center">Hola <td>{{ registros.Nombre }}, estos son tus datos personales</td></h1>
+                        <h1 figure class="text-center text-dark bg-primary">Hola <strong>{{ registros.Nombre }}</strong>, estos son tus datos personales</td></h1>
                         <br>
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class ="col-10">
                         <table class="table table-primary table-bordered bordered-primary table-lg" >
                             <thead class="table-dark ">
-                              
                             </thead>
                             <tbody>
-                                
-                                
-                                <tr>
-                                    <th scope="row" >ID</th>
-                                    <td>{{ registros.id }}</td>
-                                </tr>
                                 <tr>
                                     <th scope="row">Nombre</th>
                                     <td>{{ registros.Nombre }}</td>
@@ -78,9 +71,13 @@
                                 {% endfor %}
                             </tbody>
                         </table>
-                        
-                        <a class="btn btn-secondary btn-lg" href="/Seleccionar_meta " role="button">Elegir meta</a>
+                        <div class="d-grid gap-2 d-md-block">  
+                        <a class="btn btn-secondary btn-lg" href="/Seleccionar_meta " role="button"><h3>Elegir meta</h3></a>
+                        <a class="btn btn-secondary btn-lg" href="/estadisticas " role="button"><h3>Ver estadisticas</h3></a>
+                    </div>
+                    <br>
                         <a class="btn btn-secondary btn-lg" href="/ " role="button">Volver</a>
+                    </div>
                     </div>
                     <div class="card-footer text-muted">
                     </div>
