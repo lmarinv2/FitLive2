@@ -257,7 +257,7 @@ def agregar_bebidas(request):
                 elif cant == "1000":
                     b = Bedidas(usuario=registro(pk=idperfil), Bebida=beb, Cantidad= cant, calorias_Bedida = 550, Fecha =fech )
                     b.save()
-                   
+
             elif beb == "Gaseosa":
                 if cant == "250":
                     b = Bedidas(usuario=registro(pk=idperfil), Bebida=beb, Cantidad= cant, calorias_Bedida = 102, Fecha =fech )
@@ -328,7 +328,7 @@ def registro_comidas(request):
 def agregar_comida(request):
     return render(request,'agregar_comida.html')
 ###########################################################################################################################
-def agregar_comida(request):
+def agregar_comidas(request):
     if request.method=='POST':
         form=comidaForm(request.POST)
        
@@ -339,8 +339,68 @@ def agregar_comida(request):
         
     return render(request,'agregar_comida.html',{'form':form})
 ###########################################################################################################################
+def agregar_comida(request):
+    if request.method == "POST":
+        com = request.POST.get("Comida")
+        car = request.POST.get("Carbohidratos")
+        pro = request.POST.get("Proteina")
+        gra = request.POST.get("Grasas")
+        if (com == "Desayuno")or(com == "Almuerzo")or(com == "Cena")or(com == "Snacks"):
+            totalcalorias=0
+            if car=="0":
+                c=Comida(usuario=registro(pk=idperfil), Comida=com,Carbohidratos=car, calorias_Comida=0)
+                c.save()
+            elif car=="25":
+                c=Comida(usuario=registro(pk=idperfil), Comida=com,Carbohidratos=car, calorias_Comida=100)
+                c.save()
+            elif car=="25":
+                c=Comida(usuario=registro(pk=idperfil), Comida=com,Carbohidratos=car, calorias_Comida=100)
+                c.save()
+            elif car=="25":
+                c=Comida(usuario=registro(pk=idperfil), Comida=com,Carbohidratos=car, calorias_Comida=100)
+                c.save()
+            elif car=="25":
+                c=Comida(usuario=registro(pk=idperfil), Comida=com,Carbohidratos=car, calorias_Comida=100)
+                c.save()
+                
+            if pro=="0":
+                c=Comida(usuario=registro(pk=idperfil), Comida=com,Proteina=car, calorias_Comida=0)
+                c.save()
+            elif pro=="25":
+                c=Comida(usuario=registro(pk=idperfil), Comida=com,Proteina=car, calorias_Comida=100)
+                c.save()
+            elif pro=="50":
+                c=Comida(usuario=registro(pk=idperfil), Comida=com,Proteina=car, calorias_Comida=200)
+                c.save()
+            elif pro=="100":
+                c=Comida(usuario=registro(pk=idperfil), Comida=com,Proteina=car, calorias_Comida=400)
+                c.save()
+            elif pro=="150":
+                c=Comida(usuario=registro(pk=idperfil), Comida=com,Proteina=car, calorias_Comida=600)
+                c.save()
+            elif pro=="250":
+                c=Comida(usuario=registro(pk=idperfil), Comida=com,Proteina=car, calorias_Comida=1000)
+                c.save()
+            elif pro=="350":
+                c=Comida(usuario=registro(pk=idperfil), Comida=com,Proteina=car, calorias_Comida=1400)
+                c.save()
 
-    
-
-        
-
+            if gra=="0":
+                c=Comida(usuario=registro(pk=idperfil), Comida=com,Grasas=gra, calorias_Comida=0)
+                c.save()
+            elif gra=="10":
+                c=Comida(usuario=registro(pk=idperfil), Comida=com,Grasas=gra, calorias_Comida=90)
+                c.save()
+            elif gra=="20":
+                c=Comida(usuario=registro(pk=idperfil), Comida=com,Grasas=gra, calorias_Comida=180)
+                c.save()
+            elif gra=="40":
+                c=Comida(usuario=registro(pk=idperfil), Comida=com,Grasas=gra, calorias_Comida=360)
+                c.save()
+            elif gra=="60":
+                c=Comida(usuario=registro(pk=idperfil), Comida=com,Grasas=gra, calorias_Comida=540)
+                c.save()
+            else:
+                pass
+            messages.success(request, "Comida añadida")
+    return render(request,'agregar_comida.html')

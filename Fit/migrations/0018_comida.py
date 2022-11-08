@@ -16,7 +16,6 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('Nombre', models.CharField(max_length=200)),
                 ('dientes', models.TextField()),
-                ('Hora', models.DateTimeField()),
             ],
         ),
     ]

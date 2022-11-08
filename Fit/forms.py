@@ -27,8 +27,7 @@ class comidaForm(forms.ModelForm):
             'Comida',
             'Carbohidratos',
             'Proteina',
-            'Azucar',
-            'Hora',
+            'Grasas',
         
             ]
          
@@ -36,15 +35,13 @@ class comidaForm(forms.ModelForm):
             'Comida':'Comida',
             'Carbohidratos':'Carbohidratos',
             'Proteina':'Proteina',
-            'Azucar':'Azucar',
-            'Hora':'Hora',
+            'Grasas':'Grasas',
         }
          widgets={
             'Comida':forms.CheckboxSelectMultiple(),
             'Carbohidratos':forms.Select(attrs={'class':'form-control'}),
             'Proteina':forms.Select(attrs={'class':'form-control'}),
-            'Azucar':forms.Select(attrs={'class':'form-control'}),
-            'Hora':forms.Select(attrs={'class':'form-control'}),
+            'Grasas':forms.Select(attrs={'class':'form-control'}),
             
             
         }

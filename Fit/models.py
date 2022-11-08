@@ -1,6 +1,6 @@
 from django.db import models
 
-from .choices import deportes,metas,puntos,comida,carbohidratos,proteina,azucar
+from .choices import deportes,metas,puntos,comida,carbohidratos,proteina,azucar,grasas
 
 
 class registro(models.Model):
@@ -37,9 +37,12 @@ class Comida(models.Model):
     Comida=models.CharField(max_length=100,choices=comida)
     Carbohidratos=models.CharField(max_length=100,choices=carbohidratos)
     Proteina=models.CharField(max_length=100,choices=proteina)
-    Azucar=models.CharField(max_length=100,choices=azucar)
-    Hora=models.DateTimeField()
+    #Azucar=models.CharField(max_length=100,choices=azucar)
+    Grasas=models.CharField(max_length=100,choices=grasas)
+    calorias_Comida = models.CharField(max_length=30,null=True,blank=True)
+    #Hora=models.DateTimeField()
     usuario=models.ForeignKey(registro,null=True,blank=True,on_delete=models.CASCADE)
+    Fecha=models.DateField(null=True,blank=True)
 
 class Bedidas(models.Model):
     Bebida=models.CharField(max_length=20)

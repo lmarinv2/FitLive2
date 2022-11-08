@@ -22,7 +22,7 @@ class MetasAdmin(admin.ModelAdmin):
 
 @admin.register(Comida)
 class ComidaAdmin(admin.ModelAdmin):
-    list_display=('Comida','Carbohidratos','Proteina','Azucar','Hora','usuario')  
+    list_display=('Comida','usuario')  
 
 @admin.register(Bedidas)
 class registroAdmin(admin.ModelAdmin):

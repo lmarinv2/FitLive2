@@ -40,26 +40,30 @@ comida=(
     ('Snacks','Snacks'),
 )
 carbohidratos=(
-    ('Porcion','100 gramos'),
-    ('2_Porciones','200 gramos'),
-    ('3_porciones','300 gramos'),
-    ('+3_porciones','>300 gramos'),
+    ('Porcion','25 gramos'),
+    ('2_Porciones','50 gramos'),
+    ('3_porciones','100 gramos'),
+    ('+3_porciones','150 gramos'),
 
 )
 proteina=(
     ('Porcion','<100 gramos'),
-    ('2_Porcione','<150 gramos'),
-    ('3_porcione','<200 gramos'),
-    ('4_porcione','<250 gramos'),
-    ('5_porcione','>300gramos',),
+    ('2_Porcione','<25 gramos'),
+    ('3_porcione','<50 gramos'),
+    ('4_porcione','<100 gramos'),
+    ('5_porcione','>150 gramos'),
+    ('6_porcione','>250 gramos'),
+    ('7_porcione','>350 gramos'),
 )
 azucar=(
     ('Porcion','<10 gramos'),
-    ('2_Porciones','<50 gramos'),
-    ('3_porciones','<100 gramos'),
-    ('4_porciones','<200 gramos'),
-    ('5_porciones','>300gramos',),
-    
-    
-    
+    ('2_Porciones','<20 gramos'),
+    ('3_porciones','<40 gramos'),
+    ('4_porciones','<60 gramos'),
+)
+grasas=(
+    ('Porcion','<10 gramos'),
+    ('2_Porciones','<20 gramos'),
+    ('3_porciones','<40 gramos'),
+    ('4_porciones','<60 gramos'),
 )

@@ -1,5 +1,113 @@
-<form method="post">
-    {%csrf_token%}
-    {{form.as_p}}
-    <button type="submit">Guardar</button>
-</form>
+{% load static %}
+<html>
+
+<head>
+    <!doctype html>
+    <html lang="en">
+      <head>
+        <title>FitLife</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap CSS v5.2.0-beta1 -->
+        <link rel="stylesheet" href="{% static 'custom.css' %}">
+        <!--sweetAlet-->
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      </head>
+      <body>
+
+</head>
+<body>
+
+    {% block content %}
+    <html>
+  <body>
+    </nav>
+        <div class="container">
+            <div class="row">
+                <div class ="col-12">
+                  <br>
+                    <form enctype ="multipart/form-data" method="post">
+                        {% csrf_token %}
+                        <h1 figure class="text-center text-dark bg-primary">AGREGAR COMIDA</td></h1>
+                        <br>
+                        <h3>Para el registro de comidas, selecciona la comida, las porciones que consumio y finalmente la fecha en la que 
+                          disfrutaste esta comida</h3>
+                          <br>
+                        <div class="container">
+                          <div class="row justify-content-center">
+                              <div class ="col-10">
+                          <select class="form-select" name="Comida" aria-label="Default select example">
+                            <option selected>Seleccione la comida</option>
+                            <option value="Desayuno">Desayuno</option>
+                            <option value="Almuerzo">Almuerzo</option>
+                            <option value="Cena">Cena</option>
+                            <option value="Snacks">Snacks</option>
+                          </select>
+                        
+                          <br>
+                          <br>
+  
+                          <select class="form-select" name="Carbohidratos" aria-label="Default select example">
+                            <option selected>Seleccione la cantidad de carbohidratos</option>
+                            <option value="0">No consume</option>
+                            <option value="25">Igual o menor a 25 gramos</option>
+                            <option value="50">Igual o menor a 50 gramos</option>
+                            <option value="100">Igual o menor a 100 gramos</option>
+                            <option value="150">Igual o menor a 150 gramos</option>
+                          </select>
+
+                          <br>
+                          <select class="form-select" name="Proteina" aria-label="Default select example">
+                            <option selected>Seleccione la cantidad de proteina</option>
+                            <option value="0">No consume</option>
+                            <option value="25">Igual o menor a 25 gramos</option>
+                            <option value="50">Igual o menor a 50 gramos</option>
+                            <option value="100">Igual o menor a 100 gramos</option>
+                            <option value="150">Igual o menor a 150 gramos</option>
+                            <option value="250">Igual o menor a 250 gramos</option>
+                            <option value="350">Igual o menor a 350 gramos</option>
+                          </select>
+                          <br>
+                          <select class="form-select" name="Grasas" aria-label="Default select example">
+                            <option selected>Seleccione la cantidad de grasas</option>
+                            <option value="0">No consume</option>
+                            <option value="10">Igual o menor a 10 gramos</option>
+                            <option value="20">Igual o menor a 20 gramos</option>
+                            <option value="40">Igual o menor a 40 gramos</option>
+                            <option value="60">Igual o menor a 60 gramos</option>
+                          </select>
+                          <br>
+
+  
+                          <input class="form-control"  type="date" name="Fecha" aria-describedby="Default select example"
+                            value="2022-06-01"
+                            min="2022-06-01" max="2023-05-31"> 
+                          </div> 
+
+                          <br> 
+                          <div class="d-grid gap-2 col-4 mx-auto">    
+                            <br>                                                                                     
+                       <input class="btn btn-secondary btn-lg" type="submit" value="Agregar" >
+                      
+                       <a class="btn btn-secondary btn-lg" href="/alimentacion " role="button">Volver</a>
+                       
+                       {% if messages %}
+                       {%for result in messages%}
+                       <b style="color:green;"><h2><strong>{{result}}</strong></h2></b>
+                       {%endfor%}
+                       {% endif %}                      </form>    
+                           
+            </div>
+            </div>
+        </div>
+
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+  </body>
+</html>   
+{% endblock %}
+
+</body>
+</html>
