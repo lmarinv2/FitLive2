@@ -118,7 +118,6 @@ def actividad(request):
             if dep == "ci":
                 if tiem == "30":
                     if usuario[0][0] <= 65: 
-                        print("entro")
                         b = Deporte(usuario=registro(pk=idperfil), Deporte=dep, Tiempo= tiem, calorias_deporte = 230, Fecha =fech)
                         b.save()
                     elif usuario[0][0] >= 66 and usuario[0][0] <= 75: 
@@ -130,7 +129,6 @@ def actividad(request):
                 
                 elif tiem == "100":
                     if usuario[0][0] <= 65: 
-                        print("entro")
                         b = Deporte(usuario=registro(pk=idperfil), Deporte=dep, Tiempo= tiem, calorias_deporte = 460, Fecha =fech )
                         b.save()
                     elif usuario[0][0] >= 66 and usuario[0][0] <= 75: 
@@ -143,7 +141,6 @@ def actividad(request):
             elif dep == "na":
                 if tiem == "30":
                     if usuario[0][0] <= 65: 
-                        print("entro")
                         b = Deporte(usuario=registro(pk=idperfil), Deporte=dep, Tiempo= tiem, calorias_deporte = 180, Fecha =fech )
                         b.save()
                     elif usuario[0][0] >= 66 and usuario[0][0] <= 75: 
@@ -155,7 +152,6 @@ def actividad(request):
 
                 elif tiem == "100":
                     if usuario[0][0] <= 65: 
-                        print("entro")
                         b = Deporte(usuario=registro(pk=idperfil), Deporte=dep, Tiempo= tiem, calorias_deporte = 360, Fecha =fech )
                         b.save()
                     elif usuario[0][0] >= 66 and usuario[0][0] <= 75: 
@@ -313,13 +309,41 @@ def estadisticas(request):
         beb = [list(elem) for elem in beb]
         Dep = Deporte.objects.values_list('Deporte','Tiempo','Fecha','calorias_deporte','usuario')
         Dep = [list(elem) for elem in Dep]
-    
+
+
+        calorias_consumidas = 0
+        contador1=0;
+        b = 0;
+        for j in beb:
+            a=0
+            for i in date_generated:    
+                if beb[b][3] == int(idperfil):   
+                    if date_generated[a] == pd.Timestamp(beb[b][1]):
+                        calorias_consumidas= calorias_consumidas + int(beb[b][2])
+                        contador1=contador1+1;
+                a=a+1
+            b=b+1
+        ########################################################################################3
+        calorias_gastadas = 0
+        contador2=0;
+        c=0
+        for j in Dep:
+            d=0
+            for i in date_generated: 
+                if Dep[c][4] == int(idperfil):   
+                    if date_generated[d] == pd.Timestamp(Dep[c][2]):
+                        calorias_gastadas= calorias_gastadas + int(Dep[c][3])
+                        contador2=contador2+1;
+                d=d+1
+            c=c+1
+
+        promedio_consumidas = calorias_consumidas/contador1
+        promedio_gastadas = calorias_gastadas/contador2
+
+        print(promedio_consumidas)
+        print(promedio_gastadas)
         
-        for i in date_generated:         
-            if date_generated[i] == beb[0][1]:
-                pass
-        
-    return render(request,'estadisticas.html')
+    return render(request,'estadisticas.html', {'consumidas':promedio_consumidas , 'gastadas':promedio_gastadas})
 ###########################################################################################################################
 def registro_comidas(request):
     return render(request,'registro_comidas.html')

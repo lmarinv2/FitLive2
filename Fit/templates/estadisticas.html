@@ -55,14 +55,22 @@
                        <input class="btn btn-secondary btn-lg" type="submit" value="Buscar" >
                        <a class="btn btn-secondary btn-lg" href="/ " role="button">Volver</a>
                       </div> 
-                       
+                      <br>
+                      <br>
                        {% if messages %}
                        {%for result in messages%}
                        <b style="color:green;"><h2><strong>{{result}}</strong></h2></b>
                        {%endfor%}
-                       {% endif %}                      
+                       {% endif %}  
+                       <br>                    
                       </form>    
-                           
+
+                      <br>
+                      <br>
+                      <h2>Su promedio de calorias consumidas fue {{ consumidas }} </h2> 
+                      <br>
+                      <br>
+                      <h2>Su promedio de calorias gastadas fue {{ gastadas }} </h2>        
             </div>
             </div>
         </div>
