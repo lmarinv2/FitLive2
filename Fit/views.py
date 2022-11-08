@@ -15,8 +15,8 @@ from datetime import datetime
 import datetime
 import pandas as pd
 
-emailperfil = ""
-idperfil = ""
+emailperfil = "lauramarin452@gmail.com"
+idperfil = "7"
 
 #from django.contrib.auth.tokens import
 # Create your views here.
@@ -311,13 +311,13 @@ def estadisticas(request):
         usuario = [list(elem) for elem in usuario]
         beb = Bedidas.objects.values_list('Bebida','Fecha','calorias_Bedida','usuario')
         beb = [list(elem) for elem in beb]
-        print(beb)
-        a = 0;
+        Dep = Deporte.objects.values_list('Deporte','Tiempo','Fecha','calorias_deporte','usuario')
+        Dep = [list(elem) for elem in Dep]
+    
+        
         for i in date_generated:         
-            b = 0;
-            if date_generated[a] == emailperfil:
-                b = b+1;
-            a = a+1;
+            if date_generated[i] == beb[0][1]:
+                pass
         
     return render(request,'estadisticas.html')
 ###########################################################################################################################
