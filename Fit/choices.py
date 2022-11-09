@@ -40,17 +40,17 @@ comida=(
     ('Snacks','Snacks'),
 )
 carbohidratos=(
-    ('Porcion','25 gramos'),
-    ('2_Porciones','50 gramos'),
-    ('3_porciones','100 gramos'),
-    ('+3_porciones','150 gramos'),
+    ('Porcion','25'),
+    ('2_Porciones','50'),
+    ('3_porciones','100'),
+    ('+3_porciones','150'),
 
 )
 proteina=(
-    ('Porcion','<100 gramos'),
-    ('2_Porcione','<25 gramos'),
-    ('3_porcione','<50 gramos'),
-    ('4_porcione','<100 gramos'),
+    ('Porcion','100'),
+    ('2_Porcione','25'),
+    ('3_porcione','50'),
+    ('4_porcione','100 gramos'),
     ('5_porcione','>150 gramos'),
     ('6_porcione','>250 gramos'),
     ('7_porcione','>350 gramos'),
