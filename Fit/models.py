@@ -35,11 +35,11 @@ class Metas(models.Model):
     
 class Comida(models.Model):
     Comida=models.CharField(max_length=100,choices=comida)
-    Carbohidratos=models.CharField(max_length=100,choices=carbohidratos)
-    Proteina=models.CharField(max_length=100,choices=proteina)
+    Carbohidratos=models.IntegerField(max_length=100)
+    Proteina=models.IntegerField(max_length=100)
     #Azucar=models.CharField(max_length=100,choices=azucar)
-    Grasas=models.CharField(max_length=100,choices=grasas)
-    calorias_Comida = models.CharField(max_length=30,null=True,blank=True)
+    Grasas=models.IntegerField(max_length=100)
+    calorias_Comida = models.IntegerField(max_length=30,null=True,blank=True)
     #Hora=models.DateTimeField()
     usuario=models.ForeignKey(registro,null=True,blank=True,on_delete=models.CASCADE)
     Fecha=models.DateField(null=True,blank=True)

@@ -297,23 +297,28 @@ def calendario(request):
     return render(request,'calendario.html')
 ###########################################################################################################################
 def estadisticas(request):
+    promedio_consumidas=0
+    promedio_gastadas=0
+    calorias_consumidas=0
+    calorias_gastadas=0
     if request.method == "POST":
         fechinc = request.POST.get("Fechainicio")
         fechfin = request.POST.get("Fechafinal")
         start = datetime.datetime.strptime(fechinc, "%Y-%m-%d")
         end = datetime.datetime.strptime(fechfin, "%Y-%m-%d")
         date_generated = pd.date_range(start, end)
-        usuario = registro.objects.filter(pk=idperfil).values_list('pk')
+        usuario = registro.objects.filter(pk=idperfil).values_list('pk','calorias')
         usuario = [list(elem) for elem in usuario]
         beb = Bedidas.objects.values_list('Bebida','Fecha','calorias_Bedida','usuario')
         beb = [list(elem) for elem in beb]
         Dep = Deporte.objects.values_list('Deporte','Tiempo','Fecha','calorias_deporte','usuario')
         Dep = [list(elem) for elem in Dep]
+        Com = Comida.objects.values_list('usuario','Fecha','calorias_Comida')
+        Com = [list(elem) for elem in Com]
+        
 
-
-        calorias_consumidas = 0
-        contador1=0;
-        b = 0;
+        contador1=0
+        b=0
         for j in beb:
             a=0
             for i in date_generated:    
@@ -323,9 +328,28 @@ def estadisticas(request):
                         contador1=contador1+1;
                 a=a+1
             b=b+1
+
+        b=0
+        for j in Com:
+            a=0
+            for i in date_generated:    
+                if Com[b][0] == int(idperfil):   
+                    if date_generated[a] == pd.Timestamp(Com[b][1]):
+                        calorias_consumidas= calorias_consumidas + int(Com[b][2])
+                        contador1=contador1+1;
+                a=a+1
+            b=b+1
         ########################################################################################3
-        calorias_gastadas = 0
-        contador2=0;
+
+       # print(calorias_gastadas)
+        contador2=0
+        c=0
+        for j in usuario:
+            if usuario[c][0] == int(idperfil):   
+                calorias_gastadas= calorias_gastadas + int(usuario[c][1])
+                contador2=contador2+1;
+            c=c+1
+        
         c=0
         for j in Dep:
             d=0
@@ -337,11 +361,18 @@ def estadisticas(request):
                 d=d+1
             c=c+1
 
+
+        if contador1 ==0:
+            contador1=1
+        if contador2 ==0:
+            contador2=1
+        
+
         promedio_consumidas = calorias_consumidas/contador1
         promedio_gastadas = calorias_gastadas/contador2
+        print(calorias_gastadas)
+        print(contador2)
 
-        print(promedio_consumidas)
-        print(promedio_gastadas)
         
     return render(request,'estadisticas.html', {'consumidas':promedio_consumidas , 'gastadas':promedio_gastadas})
 ###########################################################################################################################
@@ -369,62 +400,46 @@ def agregar_comida(request):
         car = request.POST.get("Carbohidratos")
         pro = request.POST.get("Proteina")
         gra = request.POST.get("Grasas")
-        if (com == "Desayuno")or(com == "Almuerzo")or(com == "Cena")or(com == "Snacks"):
-            totalcalorias=0
-            if car=="0":
-                c=Comida(usuario=registro(pk=idperfil), Comida=com,Carbohidratos=car, calorias_Comida=0)
-                c.save()
-            elif car=="25":
-                c=Comida(usuario=registro(pk=idperfil), Comida=com,Carbohidratos=car, calorias_Comida=100)
-                c.save()
-            elif car=="25":
-                c=Comida(usuario=registro(pk=idperfil), Comida=com,Carbohidratos=car, calorias_Comida=100)
-                c.save()
-            elif car=="25":
-                c=Comida(usuario=registro(pk=idperfil), Comida=com,Carbohidratos=car, calorias_Comida=100)
-                c.save()
-            elif car=="25":
-                c=Comida(usuario=registro(pk=idperfil), Comida=com,Carbohidratos=car, calorias_Comida=100)
-                c.save()
-                
-            if pro=="0":
-                c=Comida(usuario=registro(pk=idperfil), Comida=com,Proteina=car, calorias_Comida=0)
-                c.save()
-            elif pro=="25":
-                c=Comida(usuario=registro(pk=idperfil), Comida=com,Proteina=car, calorias_Comida=100)
-                c.save()
-            elif pro=="50":
-                c=Comida(usuario=registro(pk=idperfil), Comida=com,Proteina=car, calorias_Comida=200)
-                c.save()
-            elif pro=="100":
-                c=Comida(usuario=registro(pk=idperfil), Comida=com,Proteina=car, calorias_Comida=400)
-                c.save()
-            elif pro=="150":
-                c=Comida(usuario=registro(pk=idperfil), Comida=com,Proteina=car, calorias_Comida=600)
-                c.save()
-            elif pro=="250":
-                c=Comida(usuario=registro(pk=idperfil), Comida=com,Proteina=car, calorias_Comida=1000)
-                c.save()
-            elif pro=="350":
-                c=Comida(usuario=registro(pk=idperfil), Comida=com,Proteina=car, calorias_Comida=1400)
-                c.save()
+        fech = request.POST.get("Fecha")
+        totalcalorias=0
+        
+        if car=="25":
+            totalcalorias= totalcalorias + 100
+        elif car=="50":
+            totalcalorias= totalcalorias + 200
+        elif car=="100":
+            totalcalorias= totalcalorias + 400
+        elif car=="150":
+            totalcalorias= totalcalorias + 600
 
-            if gra=="0":
-                c=Comida(usuario=registro(pk=idperfil), Comida=com,Grasas=gra, calorias_Comida=0)
-                c.save()
-            elif gra=="10":
-                c=Comida(usuario=registro(pk=idperfil), Comida=com,Grasas=gra, calorias_Comida=90)
-                c.save()
-            elif gra=="20":
-                c=Comida(usuario=registro(pk=idperfil), Comida=com,Grasas=gra, calorias_Comida=180)
-                c.save()
-            elif gra=="40":
-                c=Comida(usuario=registro(pk=idperfil), Comida=com,Grasas=gra, calorias_Comida=360)
-                c.save()
-            elif gra=="60":
-                c=Comida(usuario=registro(pk=idperfil), Comida=com,Grasas=gra, calorias_Comida=540)
-                c.save()
-            else:
-                pass
-            messages.success(request, "Comida añadida")
-    return render(request,'agregar_comida.html')
+            
+        if pro=="25":
+            totalcalorias= totalcalorias + 100
+        elif pro=="50":
+            totalcalorias= totalcalorias + 200
+        elif pro=="100":
+            totalcalorias= totalcalorias + 400
+        elif pro=="150":
+            totalcalorias= totalcalorias + 600
+        elif pro=="250":
+            totalcalorias= totalcalorias + 1000
+        elif pro=="350":
+            totalcalorias= totalcalorias + 1400
+
+        if gra=="10":
+           totalcalorias= totalcalorias + 90
+        elif gra=="20":
+            totalcalorias= totalcalorias + 180
+        elif gra=="40":
+            totalcalorias= totalcalorias + 360
+        elif gra=="60":
+            totalcalorias= totalcalorias + 540
+        else:
+            pass
+
+        b = Comida(usuario=registro(pk=idperfil), Comida=com, Carbohidratos=car, Proteina=pro, Grasas=gra, calorias_Comida= totalcalorias, Fecha= fech )
+        b.save()
+
+        messages.success(request, "Comida añadida")
+
+        return render(request,'agregar_comida.html')
