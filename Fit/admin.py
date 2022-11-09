@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from Fit.models import Bedidas, Deporte, registro, Metas,Comida
+from Fit.models import Bedidas, Deporte, registro, Metas,Comida,Recetas
 
 
 # Register your models here.
@@ -28,5 +28,7 @@ class ComidaAdmin(admin.ModelAdmin):
 class registroAdmin(admin.ModelAdmin):
     list_display=('usuario','Bebida')
     
-
+@admin.register(Recetas)
+class registroAdmin(admin.ModelAdmin):
+    list_display=('usuario','Nombre')
     

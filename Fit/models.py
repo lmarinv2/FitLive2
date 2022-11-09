@@ -1,6 +1,6 @@
 from django.db import models
 
-from .choices import deportes,metas,puntos,comida,carbohidratos,proteina,azucar,grasas
+from .choices import deportes,metas,puntos,comida,carbohidratos,proteina,azucar,grasas,nombre_recetas
 
 
 class registro(models.Model):
@@ -35,11 +35,11 @@ class Metas(models.Model):
     
 class Comida(models.Model):
     Comida=models.CharField(max_length=100,choices=comida)
-    Carbohidratos=models.IntegerField(max_length=100)
-    Proteina=models.IntegerField(max_length=100)
+    Carbohidratos=models.IntegerField()
+    Proteina=models.IntegerField()
     #Azucar=models.CharField(max_length=100,choices=azucar)
-    Grasas=models.IntegerField(max_length=100)
-    calorias_Comida = models.IntegerField(max_length=30,null=True,blank=True)
+    Grasas=models.IntegerField()
+    calorias_Comida = models.IntegerField(null=True,blank=True)
     #Hora=models.DateTimeField()
     usuario=models.ForeignKey(registro,null=True,blank=True,on_delete=models.CASCADE)
     Fecha=models.DateField(null=True,blank=True)
@@ -51,5 +51,12 @@ class Bedidas(models.Model):
     calorias_Bedida = models.CharField(max_length=30,null=True,blank=True)
     usuario=models.ForeignKey(registro,null=True,blank=True,on_delete=models.CASCADE)
     
-    
+class Recetas(models.Model):
+    Nombre=models.CharField(max_length=100,choices=nombre_recetas)
+    Tiempo=models.IntegerField()
+    Ingredientes=models.JSONField()
+    Preparacion=models.TextField()
+    Calorias=models.IntegerField()
+    Fecha=models.DateField(null=True,blank=True)
+    usuario=models.ForeignKey(registro,null=True,blank=True,on_delete=models.CASCADE)
     

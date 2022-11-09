@@ -67,3 +67,13 @@ grasas=(
     ('3_porciones','<40 gramos'),
     ('4_porciones','<60 gramos'),
 )
+nombre_recetas=(
+    ('1','Huevos rancheros con pico de gallo'),
+    ('2','Ensalada de Pollo'),
+    ('3','Pancakes de banano'),
+    ('4','Tostada'),
+    ('5','Pasta Alfredo'),
+    ('6','Papas al Horno'),
+    ('7','Smoothie de banano'),
+    ('8','Carne y brocoli'),
+)
