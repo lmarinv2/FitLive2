@@ -30,5 +30,5 @@ class registroAdmin(admin.ModelAdmin):
     
 @admin.register(Recetas)
 class registroAdmin(admin.ModelAdmin):
-    list_display=('usuario','Nombre')
+    list_display=('Nombre','Calorias')
     
