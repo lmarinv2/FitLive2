@@ -59,7 +59,13 @@
                       <br>
                        {% if messages %}
                        {%for result in messages%}
-                       <b style="color:green;"><h2><strong>{{result}}</strong></h2></b>
+                       
+                       <h2>Su promedio de calorias consumidas fue {{ consumidas }} </h2> 
+                      <br>
+                      <br>
+                      <h2>Su promedio de calorias gastadas fue {{ gastadas }} </h2>   
+                      <br>
+                      <h2>El numero de dias que realizo ejercicio {{ ejercicio }} </h2>   
                        {%endfor%}
                        {% endif %}  
                        <br>                    
@@ -67,11 +73,7 @@
 
                       <br>
                       <br>
-                      <h2>Su promedio de calorias consumidas fue {{ consumidas }} </h2> 
-                      <br>
-                      <br>
-                      <h2>Su promedio de calorias gastadas fue {{ gastadas }} </h2>        
-            </div>
+
             </div>
         </div>
 

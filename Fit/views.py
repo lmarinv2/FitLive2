@@ -346,7 +346,7 @@ def estadisticas(request):
         c=0
         for j in usuario:
             if usuario[c][0] == int(idperfil):   
-                calorias_gastadas= calorias_gastadas + int(usuario[c][1])
+                calorias_gastadas= calorias_gastadas + int(float(usuario[c][1]))
                 contador2=contador2+1;
             c=c+1
         
@@ -373,8 +373,9 @@ def estadisticas(request):
         print(calorias_gastadas)
         print(contador2)
 
+        messages.success(request, {'consumidas':promedio_consumidas , 'gastadas':promedio_gastadas, 'ejercicio':contador2})
         
-    return render(request,'estadisticas.html', {'consumidas':promedio_consumidas , 'gastadas':promedio_gastadas})
+    return render(request,'estadisticas.html',{'consumidas':promedio_consumidas , 'gastadas':promedio_gastadas, 'ejercicio':contador2})
 ###########################################################################################################################
 def registro_comidas(request):
     return render(request,'registro_comidas.html')
@@ -442,4 +443,76 @@ def agregar_comida(request):
 
         messages.success(request, "Comida añadida")
 
-        return render(request,'agregar_comida.html')
+    return render(request,'agregar_comida.html')
+
+#############################################################################################################################################################################
+def recetas(request):
+    calorias_consumidas=0
+    calorias_gastadas=0
+    if request.method == "POST":
+        fech = request.POST.get("Fecha")
+        obj= request.POST.get("objetivo")
+        start = datetime.datetime.strptime(fech, "%Y-%m-%d")
+        end = datetime.datetime.strptime(fech, "%Y-%m-%d")
+        date_generated = pd.date_range(start, end)
+        usuario = registro.objects.filter(pk=idperfil).values_list('pk','calorias')
+        usuario = [list(elem) for elem in usuario]
+        beb = Bedidas.objects.values_list('Bebida','Fecha','calorias_Bedida','usuario')
+        beb = [list(elem) for elem in beb]
+        Dep = Deporte.objects.values_list('Deporte','Tiempo','Fecha','calorias_deporte','usuario')
+        Dep = [list(elem) for elem in Dep]
+        Com = Comida.objects.values_list('usuario','Fecha','calorias_Comida')
+        Com = [list(elem) for elem in Com]
+        
+        b=0
+        for j in beb:
+            a=0
+            for i in date_generated:    
+                if beb[b][3] == int(idperfil):   
+                    if date_generated[0] == pd.Timestamp(beb[b][1]):
+                        calorias_consumidas= calorias_consumidas + int(beb[b][2])
+                a=a+1
+            b=b+1
+
+        b=0
+        for j in Com:
+            a=0
+            for i in date_generated:    
+                if Com[b][0] == int(idperfil):   
+                    if date_generated[0] == pd.Timestamp(Com[b][1]):
+                        calorias_consumidas= calorias_consumidas + int(Com[b][2])
+                a=a+1
+            b=b+1
+
+
+ 
+        c=0
+        for j in usuario:
+            if usuario[c][0] == int(idperfil):   
+                calorias_gastadas= calorias_gastadas + int(float(usuario[c][1]))
+            c=c+1
+        
+        c=0
+        for j in Dep:
+            d=0
+            for i in date_generated: 
+                if Dep[c][4] == int(idperfil): 
+                    if date_generated[0] == pd.Timestamp(Dep[c][2]):
+                        calorias_gastadas= calorias_gastadas + int(Dep[c][3])
+                d=d+1
+            c=c+1
+    
+        objetivo = ""
+        if obj == "menos calorias":
+            print("entro")
+            objetivo = "Recuerda que para bajar de peso debes consumir menos calorias de las que gastas"
+        elif obj == "igual calorias":
+            objetivo = "Recuerda que para mantener tu peso debes consumir igual calorias de las que gastas"
+        elif obj == "mas calorias":
+            objetivo = "Recuerda que para subir de peso debes consumir mas calorias de las que gastas"
+        elif obj == "Seleccione un objetivo":
+            objetivo = "Por favor seleccione un objetivo"
+
+
+        messages.success(request, {'consumidas':calorias_consumidas , 'gastadas':calorias_gastadas,'objetivo':objetivo})
+    return render(request,'recetas.html',{'consumidas':calorias_consumidas , 'gastadas':calorias_gastadas, 'objetivo':objetivo})

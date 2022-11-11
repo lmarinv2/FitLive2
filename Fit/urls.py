@@ -19,6 +19,7 @@ urlpatterns = [
     path('alimentacion',views.alimentacion,name='alimentacion'),
     path('agregar_comida',views.agregar_comida,name='agregar_comida'),
     path('estadisticas',views.estadisticas,name='estadisticas'),
+    path('recetas',views.recetas,name='recetas'),
 
     
     
