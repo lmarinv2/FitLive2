@@ -54,6 +54,7 @@
                        <input class="btn btn-secondary btn-lg" type="submit" value="Buscar" >
                       
                        <a class="btn btn-secondary btn-lg" href="/alimentacion " role="button">Volver</a>
+                    </form>   
                     </div>
                        {% if messages %}
                        {%for result in messages%}
@@ -66,7 +67,82 @@
                       <h2> {{ objetivo }} </h2>   
                         
                        {%endfor%}
-                       {% endif %}               </form>    
+                       <br>
+                       <br>
+                       <div class="card-body">
+                        <br>
+                        
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class ="col-10">
+                                    <h2>Seleccione la receta que desea agregar al calendario</h2> 
+                            <select class="form-select" id="inputGroupSelect01" name="recetas">
+                              <option selected>selecciona</option>
+                              <option value="1">receta 1</option>
+                              <option value="2">receta 2</option>
+                              <option value="3">receta 3</option>
+                              <option value="4">receta 4</option>
+                              <option value="5">receta 5</option>
+                              <option value="6">receta 6</option>
+                              <option value="7">receta 7</option>
+                              <option value="8">receta 8</option>
+                            </select>
+
+                            <input class="btn btn-secondary btn-lg" type="submit" value="Agregar" >
+                          </div>
+                          <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        {% for recetas in recetas %}
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class ="col-10">
+                        <table class="table table-primary table-bordered bordered-primary table-lg" >
+                            <thead class="table-dark ">
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Numero de receta</th>
+                                    <td>{{ recetas.id }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Nombre</th>
+                                    <td>{{ recetas.Nombre }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Tiempo</th>
+                                    <td>{{ recetas.Tiempo }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Ingredientes</th>
+                                    <td>{{ recetas.Ingredientes }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Preparacion</th>
+                                    <td>{{ recetas.Preparacion }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Calorias</th>
+                                    <td>{{ recetas.Calorias }}</td>
+                                </tr>
+                               
+                                <tr>
+                                </tr>
+                               
+                                </tr>
+                                
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    </div>
+                    <div class="card-footer text-muted">
+                    </div>
+                </div>
+            {% endif %}               
                            
             
             </div>

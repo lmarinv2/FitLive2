@@ -5,7 +5,7 @@ import re
 from xml.dom.minidom import Identified
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Bedidas, Comida, registro, Deporte,Metas
+from .models import Bedidas, Comida, registro, Deporte,Metas, Recetas
 from .forms import comidaForm, registroForm,deportesForm
 from django.db.models import F
 from django.contrib import messages
@@ -16,7 +16,7 @@ import datetime
 import pandas as pd
 
 emailperfil = "lauramarin452@gmail.com"
-idperfil = "7"
+idperfil = "5"
 
 #from django.contrib.auth.tokens import
 # Create your views here.
@@ -449,9 +449,12 @@ def agregar_comida(request):
 def recetas(request):
     calorias_consumidas=0
     calorias_gastadas=0
+    objetivo = ""
+    recetas =""
     if request.method == "POST":
         fech = request.POST.get("Fecha")
-        obj= request.POST.get("objetivo")
+        obj = request.POST.get("objetivo")
+        #receta_elegida = request.POST.get("recetas")
         start = datetime.datetime.strptime(fech, "%Y-%m-%d")
         end = datetime.datetime.strptime(fech, "%Y-%m-%d")
         date_generated = pd.date_range(start, end)
@@ -463,6 +466,8 @@ def recetas(request):
         Dep = [list(elem) for elem in Dep]
         Com = Comida.objects.values_list('usuario','Fecha','calorias_Comida')
         Com = [list(elem) for elem in Com]
+        rec = Recetas.objects.values_list('id','Calorias')
+        rec = [list(elem) for elem in rec]
         
         b=0
         for j in beb:
@@ -484,8 +489,6 @@ def recetas(request):
                 a=a+1
             b=b+1
 
-
- 
         c=0
         for j in usuario:
             if usuario[c][0] == int(idperfil):   
@@ -504,15 +507,29 @@ def recetas(request):
     
         objetivo = ""
         if obj == "menos calorias":
-            print("entro")
             objetivo = "Recuerda que para bajar de peso debes consumir menos calorias de las que gastas"
+            recetas= Recetas.objects.all()
         elif obj == "igual calorias":
             objetivo = "Recuerda que para mantener tu peso debes consumir igual calorias de las que gastas"
+            recetas= Recetas.objects.all()
         elif obj == "mas calorias":
             objetivo = "Recuerda que para subir de peso debes consumir mas calorias de las que gastas"
+            recetas= Recetas.objects.all()
         elif obj == "Seleccione un objetivo":
             objetivo = "Por favor seleccione un objetivo"
 
+        if( request.POST.get("recetas")):
+            a=0;
+            for i in rec:
+                if int(rec[a][0]) == int(request.POST.get("recetas")):
+                    b = Comida(usuario=registro(pk=idperfil), calorias_Comida= rec[a][1], Fecha=fech,)
+                    b.save() 
+					
+                a=a+1     
+        
+       
+        messages.success(request, {'consumidas':calorias_consumidas , 'gastadas':calorias_gastadas,'objetivo':objetivo,'recetas':recetas})
 
-        messages.success(request, {'consumidas':calorias_consumidas , 'gastadas':calorias_gastadas,'objetivo':objetivo})
-    return render(request,'recetas.html',{'consumidas':calorias_consumidas , 'gastadas':calorias_gastadas, 'objetivo':objetivo})
+    
+
+    return render(request,'recetas.html',{'consumidas':calorias_consumidas , 'gastadas':calorias_gastadas, 'objetivo':objetivo, 'recetas':recetas})
