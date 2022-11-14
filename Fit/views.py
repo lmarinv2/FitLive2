@@ -301,6 +301,8 @@ def estadisticas(request):
     promedio_gastadas=0
     calorias_consumidas=0
     calorias_gastadas=0
+    contador2=0;
+    contador1=0;
     if request.method == "POST":
         fechinc = request.POST.get("Fechainicio")
         fechfin = request.POST.get("Fechafinal")
@@ -317,7 +319,7 @@ def estadisticas(request):
         Com = [list(elem) for elem in Com]
         
 
-        contador1=0
+        
         b=0
         for j in beb:
             a=0
@@ -342,7 +344,7 @@ def estadisticas(request):
         ########################################################################################3
 
        # print(calorias_gastadas)
-        contador2=0
+        
         c=0
         for j in usuario:
             if usuario[c][0] == int(idperfil):   
