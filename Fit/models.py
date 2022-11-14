@@ -53,7 +53,7 @@ class Bedidas(models.Model):
     usuario=models.ForeignKey(registro,null=True,blank=True,on_delete=models.CASCADE)
     
 class Recetas(models.Model):
-    Nombre=models.CharField(max_length=100,choices=nombre_recetas)
+    Nombre=models.CharField(max_length=100)
     Tiempo=models.IntegerField()
     Ingredientes=models.JSONField()
     Preparacion=models.TextField()
