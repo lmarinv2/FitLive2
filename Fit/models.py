@@ -55,7 +55,7 @@ class Bedidas(models.Model):
 class Recetas(models.Model):
     Nombre=models.CharField(max_length=100)
     Tiempo=models.IntegerField()
-    Ingredientes=models.JSONField()
+    Ingredientes=models.TextField()
     Preparacion=models.TextField()
     Calorias=models.IntegerField()
     Fecha=models.DateField(null=True,blank=True)

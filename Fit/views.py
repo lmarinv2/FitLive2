@@ -523,7 +523,7 @@ def recetas(request):
         if( request.POST.get("recetas")):
             a=0;
             for i in rec:
-                if int(rec[a][0]) == int(request.POST.get("recetas")):
+                if int(float(rec[a][0]) == int(request.POST.get("recetas"))):
                     b = Comida(usuario=registro(pk=idperfil), calorias_Comida= rec[a][1], Fecha=fech,)
                     b.save() 
 					
